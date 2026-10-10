@@ -1,0 +1,30 @@
+# Build output
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.lib
+/nessys_cli
+/dma_trace
+/accuracycoin_run
+/mapper_test
+/build/
+/out/
+/dist/
+/.vs/
+
+# Settings and the per-game files the emulator writes next to ROMs
+nessysinteger.ini
+*.sav
+*.ss[0-9]
+*.cht
+*.bmp
+*.ppm
+*.wav
+
+# Game ROMs don't belong in the repository (the self-test ROMs do)
+*.nes
+*.fds
+!/tests/roms/*.nes

@@ -1,0 +1,33 @@
+{
+    "version": "@VERSION@",
+    "description": "Cycle-stepped NES emulator with a physical cartridge-connector model: tilt the cart, lift pins, hot-swap.",
+    "homepage": "@HOMEPAGE@",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "@URL@",
+            "hash": "@HASH@"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$dir\\nessysinteger.ini\")) { New-Item -ItemType File -Path \"$dir\\nessysinteger.ini\" | Out-Null }",
+    "bin": [
+        "NESSYSINTEGER.exe",
+        "nessys_cli.exe"
+    ],
+    "shortcuts": [
+        [
+            "NESSYSINTEGER.exe",
+            "NESSYSINTEGER"
+        ]
+    ],
+    "persist": "nessysinteger.ini",
+    "notes": "Battery saves, save states, cheats and screenshots are written next to your ROM files. Settings are kept across updates.",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/@REPO@/releases/download/v$version/NESSYSINTEGER-$version-win64.zip"
+            }
+        }
+    }
+}

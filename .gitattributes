@@ -1,0 +1,7 @@
+# build.bat uses goto labels, which need Windows (CRLF) line endings,
+# so batch and PowerShell scripts are stored byte-for-byte.
+*.bat -text
+*.ps1 -text
+
+*.nes binary
+*.png binary
