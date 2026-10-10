@@ -2,8 +2,6 @@
   <img src="docs/logo.png" alt="NESSYSINTEGER" width="560">
 </p>
 
-# NESSYSINTEGER
-
 **A cycle-accurate NES and Famicom emulator for Windows that treats the cartridge as a physical object.**
 
 NESSYSINTEGER runs NES and Famicom games one clock at a time, the way the hardware does. Every signal between the console and the cartridge goes through a contact-by-contact model of the real cartridge connector. Tilt the cartridge, push the front-loader's tray down, blow on the contacts, lift individual pins or swap games with the power on, and the game reacts the way it would on a real console: flickering tiles, scrambled graphics, a blinking power light, a crash.
