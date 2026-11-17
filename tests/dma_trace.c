@@ -307,6 +307,24 @@ int main(void) {
         result("1-cycle strobe from get to put is seen", n->s.pad_shift[0] == 0x0F, NULL);
         nes_destroy(n);
     }
+    puts("-- DMC timer reload vs. a $4010 write (AccuracyCoin DMC Reload Timing)");
+    {
+        Nes *n = nes_create(); nes_power(n);
+        Dmc *d = &n->s.apu.dmc;
+        cpu_bus_write(n, 0x4010, 0x0F);                                  /* fastest rate */
+        int k = 0;
+        do { n->s.cpu.cycles++; nes_cpu_clock(n); } while (!d->reloaded && ++k < 2000);
+        cpu_bus_write(n, 0x4010, 0x00);                                  /* slowest rate, on the reload cycle */
+        result("write on the reload cycle sets the new period", k < 2000 && d->timer == d->period, NULL);
+        cpu_bus_write(n, 0x4010, 0x0F);
+        k = 0;
+        do { n->s.cpu.cycles++; nes_cpu_clock(n); } while (!d->reloaded && ++k < 2000);
+        uint16_t fast = d->timer;
+        n->s.cpu.cycles++; nes_cpu_clock(n);                             /* one CPU cycle later... */
+        cpu_bus_write(n, 0x4010, 0x00);
+        result("write one cycle after the reload is too late", k < 2000 && d->timer == fast && d->period != fast, NULL);
+        nes_destroy(n);
+    }
     printf("\n%d checks, %d mismatches\n", checks, fails);
     return fails != 0;
 }

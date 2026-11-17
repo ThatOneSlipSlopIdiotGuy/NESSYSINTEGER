@@ -166,11 +166,13 @@ void apu_cycle(Nes *n) {
         uint16_t fb = (no->lfsr ^ (no->lfsr >> (no->mode ? 6 : 1))) & 1;
         no->lfsr = (uint16_t)(no->lfsr >> 1 | fb << 14);
     } else no->timer--;
+    d->reloaded = 0;
     if (get) {                                    /* the DMC runs on APU cycles */
         uint8_t act = d->act_prev;                /* playback state one APU cycle ago */
         d->act_prev = d->remain != 0;
         if (d->timer == 0) {
             d->timer = d->period;
+            d->reloaded = 1;
             if (!d->silence) {
                 if (d->shift & 1) { if (d->level <= 125) d->level += 2; } else if (d->level >= 2) d->level -= 2;
                 d->shift >>= 1;
@@ -229,6 +231,11 @@ void apu_write(Nes *n, uint16_t addr, uint8_t v) {
     case 0x400F: lc_load(&a->noise.lc, a->noise.lc.enabled, v); a->noise.env.start = 1; break;
     case 0x4010:
         a->dmc.irq_en = v >> 7; a->dmc.loop = (v >> 6) & 1; a->dmc.period = (uint16_t)(DMC_P[v & 15] / 2 - 1);
+        /* The APU steps at the start of each CPU cycle here, before that cycle's bus write, but on
+         * the 2A03 the timer's reload takes the rate register after a write in the same cycle:
+         * a write landing on the reload cycle sets the new period (AccuracyCoin, DMC Reload Timing,
+         * measured on consoles and confirmed in Visual 2A03). One cycle later it's too late. */
+        if (a->dmc.reloaded) a->dmc.timer = a->dmc.period;
         if (!a->dmc.irq_en) n->s.cpu.irq_src &= (uint8_t)~IRQ_DMC;
         break;
     case 0x4011: a->dmc.level = v & 0x7F; break;

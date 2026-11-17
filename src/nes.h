@@ -66,7 +66,9 @@ typedef struct { Env env; LenCtr lc; uint8_t duty, pos, ch1; uint16_t period, ti
 typedef struct { LenCtr lc; uint16_t period, timer; uint8_t pos, lin, lin_val, lin_flag, control; } Tri;
 typedef struct { Env env; LenCtr lc; uint16_t period, timer, lfsr; uint8_t mode; } Noise;
 typedef struct { uint8_t irq_en, loop, level, buf, buf_empty, shift, bits, silence, start_delay, disable_delay;
-                 uint16_t period, timer, samp_addr, samp_len, addr, remain; uint8_t act_prev; uint64_t wrap_empty_cyc; } Dmc;
+                 uint16_t period, timer, samp_addr, samp_len, addr, remain; uint8_t act_prev;
+                 uint8_t reloaded;   /* the timer reloaded during the current CPU cycle */
+                 uint64_t wrap_empty_cyc; } Dmc;
 typedef struct { int32_t cycle; uint8_t step, mode, inhibit, block; int16_t new_val; int8_t delay; } FrameCtr;
 typedef struct {
     Pulse sq[2]; Tri tri; Noise noise; Dmc dmc; FrameCtr fc; uint8_t fc_clear;
