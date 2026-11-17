@@ -11,7 +11,7 @@
 #include <string.h>
 #include "../src/nes.h"
 
-typedef struct { char suite[64], name[64], res[64]; unsigned addr; } Test;
+typedef struct { char suite[96], name[64], res[64]; unsigned addr; } Test;
 static Test T[512]; static int nt;
 static struct { char name[64]; unsigned val; } K[1024]; static int nk;
 
@@ -27,11 +27,32 @@ static void quoted(const char *s, char *out) {           /* copy the first "..."
     if (l > 63) l = 63;
     memcpy(out, a ? a + 1 : "", l); out[l] = 0;
 }
+/* Splits a macro's arguments at commas outside quotes; returns how many it found. */
+static int split_args(char *s, char *arg[], int max) {
+    int n = 0, inq = 0;
+    arg[n++] = s;
+    for (; *s; s++) {
+        if (*s == '"') inq = !inq;
+        else if (*s == ',' && !inq && n < max) { *s = 0; arg[n++] = s + 1; }
+        else if (*s == ';' && !inq) { *s = 0; break; }           /* comment */
+    }
+    for (int i = 0; i < n; i++) arg[i] = trim(arg[i]);
+    return n;
+}
+/* Test entries: table "name", $FF, result_x, TEST_x. Since November 2026 the unofficial-opcode
+ * tests use tblf1 "name", str_code, $FF, result_x, TEST_x and tblf2 "name", str_code, ",X", $FF,
+ * result_x, TEST_x, where str_code stands for a word the ROM spells out ("absolute" etc.). */
+static void str_word(const char *code, char *out, size_t len) {
+    static const char *W[][2] = { { "str_Indirect", "indirect" }, { "str_ZeroPage", "zeropage" },
+                                  { "str_Absolute", "absolute" }, { "str_Immediate", "immediate" } };
+    out[0] = 0;
+    for (size_t i = 0; i < sizeof W / sizeof W[0]; i++) if (!strcmp(code, W[i][0])) { snprintf(out, len, " %s", W[i][1]); return; }
+}
 static int parse_asm(const char *path) {
     FILE *f = fopen(path, "r");
     if (!f) return 0;
-    char line[2048], suite[64] = "?";
-    int pages = 0;
+    char line[2048], suite[96] = "?";
+    int pages = 0, unofficial = 0;
     while (fgets(line, sizeof line, f)) {
         char *s = trim(line), nm[64];
         unsigned v;
@@ -39,12 +60,24 @@ static int parse_asm(const char *path) {
         if (!strncmp(s, "TestPages:", 10)) pages = 1;
         if (!pages) continue;
         if (!strncmp(s, "TableTable", 10) || !strncmp(s, "EndTableTable", 13)) break;
-        if (!strncmp(s, ".byte", 5) && strchr(s, '"')) quoted(s, suite);
-        else if (!strncmp(s, "table", 5) && isspace((unsigned char)s[5]) && nt < 512) {
-            char *q = strchr(s, '"'); q = q ? strchr(q + 1, '"') : NULL;
-            char *p = q ? strchr(q, ',') : NULL; p = p ? strchr(p + 1, ',') : NULL;   /* skip the $FF */
-            if (!p || sscanf(p + 1, " %63[A-Za-z0-9_]", T[nt].res) != 1) continue;
-            quoted(s, T[nt].name); strcpy(T[nt].suite, suite); nt++;
+        int kind = !strncmp(s, "table", 5) && isspace((unsigned char)s[5]) ? 0 :
+                   !strncmp(s, "tblf1", 5) && isspace((unsigned char)s[5]) ? 1 :
+                   !strncmp(s, "tblf2", 5) && isspace((unsigned char)s[5]) ? 2 : -1;
+        if (!strncmp(s, ".byte", 5) && strstr(s, "str_UnofficialInstructions")) unofficial = 1;
+        else if (!strncmp(s, ".byte", 5) && strchr(s, '"')) {
+            char word[64]; quoted(s, word);
+            snprintf(suite, sizeof suite, "%s%s", unofficial ? "Unofficial Instructions: " : "", word);
+            unofficial = 0;
+        } else if (kind >= 0 && nt < 512) {
+            char *arg[8];
+            int na = split_args(s + 5, arg, 8);
+            if (na != 4 + kind || sscanf(arg[na - 2], "%63[A-Za-z0-9_]", T[nt].res) != 1) continue;
+            char word[24] = "", extra[8] = "";
+            if (kind) str_word(arg[1], word, sizeof word);
+            if (kind == 2) quoted(arg[2], extra);
+            quoted(arg[0], nm);
+            snprintf(T[nt].name, sizeof T[nt].name, "%s%s%s", nm, word, extra);
+            strcpy(T[nt].suite, suite); nt++;
         }
     }
     fclose(f);

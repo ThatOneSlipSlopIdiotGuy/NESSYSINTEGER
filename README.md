@@ -8,14 +8,14 @@
 
 NESSYSINTEGER runs NES and Famicom games one clock at a time, the way the hardware does. Every signal between the console and the cartridge goes through a contact-by-contact model of the real cartridge connector. Tilt the cartridge, push the front-loader's tray down, blow on the contacts, lift individual pins or swap games with the power on, and the game reacts the way it would on a real console: flickering tiles, scrambled graphics, a blinking power light, a crash.
 
-- **AccuracyCoin 144/144** at all four CPU/PPU clock alignments.
+- **AccuracyCoin 147/147** at all four CPU/PPU clock alignments.
 - **50 mapper numbers:** MMC1, MMC3, MMC5, Konami VRC1–VRC4, VRC6 and VRC7, Namco 163, Sunsoft FME-7/5B, Bandai FCG and more.
 - **Expansion audio:** VRC6, VRC7 (FM), MMC5, Namco 163 and Sunsoft 5B.
 - **Three consoles:** NES front-loader (NES-001), NES top-loader (NES-101) and Famicom, each with its own cartridge slot and reset wiring.
 - **Realistic power-on state:** your emulated console has its own memory fingerprint.
 - **Tools:** PPU viewer, debugger and memory editor, Game Genie and RAM-freeze cheats, save states, and a headless command-line runner.
 
-Version **0.7.1**. The emulator runs on Windows. The command-line tools and test suites also build on Linux and macOS.
+Version **0.7.2**. The emulator runs on Windows. The command-line tools and test suites also build on Linux and macOS.
 
 NESSYSINTEGER doesn't include any games. It loads `.nes` files in iNES and NES 2.0 format.
 
@@ -43,7 +43,7 @@ That builds five programs:
 | `nessys_cli.exe` | Headless runner for screenshots, audio capture, traces, scripted input and cartridge experiments |
 | `accuracycoin_run.exe` | Runs the AccuracyCoin test ROM headlessly and prints every result |
 | `mapper_test.exe` | Mapper and cartridge regression suite (773 checks) |
-| `dma_trace.exe` | DMA and APU timing checks (28 checks) |
+| `dma_trace.exe` | DMA and APU timing checks (30 checks) |
 
 On Linux or macOS, `make` builds the four command-line programs (not the Windows front end), and `make test` runs the self-tests.
 
@@ -109,6 +109,7 @@ OAM DMA and DMC (sample) DMA follow the get/put cycle cadence documented on the 
 
 - They halt only on read cycles, with alignment cycles.
 - The "load" and "reload" DMC timings are modelled, as are the aborted-DMA and unexpected-DMA bugs and OAM/DMC overlap.
+- A `$4010` write on the very cycle the DMC timer reloads already sets the new sample rate, as on the real chip.
 - A DMA that runs while the CPU is halted on `$4000-$401F` activates the 2A03's registers through its low address bits, the way the real chip does.
 
 `dma_trace` replays the wiki's examples cycle by cycle.
@@ -390,7 +391,7 @@ The exit code is 0 when every test passes.
   - each sound channel's pitch, measured by autocorrelation;
   - all twelve VRC2/VRC4 wirings, and the MMC5's scanline IRQ and extended attributes;
   - the console models, contact physics, the lockout chip, holding RESET, and save corruption at power-off.
-- **`dma_trace`** (28 checks) replays the NESdev Wiki's DMA examples cycle by cycle, plus AccuracyCoin's documented DMC, register-conflict, frame-IRQ and controller-strobe rules.
+- **`dma_trace`** (30 checks) replays the NESdev Wiki's DMA examples cycle by cycle, plus AccuracyCoin's documented DMC, register-conflict, frame-IRQ and controller-strobe rules.
 
 `make test` builds everything and runs the self-test ROMs, `dma_trace` and `mapper_test`.
 
@@ -400,10 +401,10 @@ The exit code is 0 when every test passes.
 
 | Test | Result |
 |---|---|
-| [AccuracyCoin](https://github.com/100thCoin/AccuracyCoin) | **144 / 144** at all four CPU/PPU clock alignments and with every power-on RAM pattern |
+| [AccuracyCoin](https://github.com/100thCoin/AccuracyCoin) | **147 / 147** (the 13 November 2026 version) at all four CPU/PPU clock alignments and with every power-on RAM pattern. The earlier 144-test version also passes |
 | Self-test ROMs (`tests/roms`) | All 18 hardware checks pass at all four alignments; the MMC1 and MMC3 tests pass |
 | `mapper_test` | 773 checks, 0 failures |
-| `dma_trace` | 28 checks, 0 mismatches |
+| `dma_trace` | 30 checks, 0 mismatches |
 
 During development, the CPU was also fuzzed against an independent 6502 model, matching registers, flags, memory and cycle counts on every opcode.
 

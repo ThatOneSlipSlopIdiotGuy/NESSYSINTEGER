@@ -6,7 +6,7 @@ This page is for whoever publishes NESSYSINTEGER builds. `package.ps1` builds th
 
 ```powershell
 scoop install gcc     # once, if you don't have a compiler yet
-.\package.ps1         # builds dist\NESSYSINTEGER-0.7.1-win64.zip and dist\nessysinteger.json,
+.\package.ps1         # builds dist\NESSYSINTEGER-0.7.2-win64.zip and dist\nessysinteger.json,
                       # then serves the zip on http://localhost:8765 until you press Ctrl+C
 ```
 
@@ -21,11 +21,11 @@ scoop install .\dist\nessysinteger.json
 1. Build the release with your repository's name:
 
    ```powershell
-   .\package.ps1 -Version 0.7.1 -Repo ThatOneSlipSlopIdiotGuy/NESSYSINTEGER
+   .\package.ps1 -Version 0.7.2 -Repo ThatOneSlipSlopIdiotGuy/NESSYSINTEGER
    ```
 
    If the repository has a different name, use that instead.
-2. On GitHub, create a release tagged `v0.7.1` and attach `dist\NESSYSINTEGER-0.7.1-win64.zip`.
+2. On GitHub, create a release tagged `v0.7.2` and attach `dist\NESSYSINTEGER-0.7.2-win64.zip`.
 
 The zip contains `NESSYSINTEGER.exe`, `nessys_cli.exe`, `README.md` and the self-test ROMs.
 
