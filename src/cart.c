@@ -326,6 +326,11 @@ void cart_power(Nes *n) {
     cs->wram_on = 1; cs->wram_wp = 0; cs->wram_off = 0; cs->a12 = 0; cs->a12_low = 0;
     if (n->mapper == 1) cs->regs[0] = 0x0C;
     if (n->mapper == 4 || n->mapper == 118 || n->mapper == 119) { cs->regs[7] = 0; cs->regs[8] = 1; }
+    /* MMC3 $A001: the power-on value isn't documented. PRG-RAM starts enabled and writable here, as
+     * wram_on above says; leaving the register at 0 used to switch the RAM off at the first write to
+     * any MMC3 register, which lost the $6000 output of blargg's mmc3_test ROMs (they never write
+     * $A001). The MMC6 uses the register differently and starts with its RAM protected. */
+    if ((n->mapper == 4 && n->submapper != 1) || n->mapper == 118 || n->mapper == 119) cs->regs[10] = 0x80;
     cs->chr_src = 0;
     memset(cs->mreg, 0, sizeof cs->mreg); memset(cs->mw, 0, sizeof cs->mw); memset(cs->mc, 0, sizeof cs->mc);
     memset(&cs->vrc6, 0, sizeof cs->vrc6); memset(&cs->vrc7, 0, sizeof cs->vrc7); memset(&cs->s5b, 0, sizeof cs->s5b);
