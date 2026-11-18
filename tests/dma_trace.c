@@ -325,6 +325,50 @@ int main(void) {
         result("write one cycle after the reload is too late", k < 2000 && d->timer == fast && d->period != fast, NULL);
         nes_destroy(n);
     }
+    puts("-- the reset line (blargg apu_reset, blargg_apu_2005.07.30 09.reset_timing)");
+    {
+        Nes *n = nes_create(); nes_power(n);
+        cpu_bus_write(n, 0x4015, 0x0F); n->s.cpu.cycles++; nes_cpu_clock(n);
+        cpu_bus_write(n, 0x4003, 0x08); n->s.cpu.cycles++; nes_cpu_clock(n);   /* loads land a cycle later */
+        int loaded = n->s.apu.sq[0].lc.len != 0;
+        cpu_bus_write(n, 0x4007, 0x08);                                  /* RESET right after a load */
+        apu_reset_line(n, 1); apu_reset_line(n, 0);
+        cpu_bus_write(n, 0x4003, 0x08);                                  /* $4015 is 0 again: ignored */
+        for (int k = 0; k < 4; k++) { n->s.cpu.cycles++; nes_cpu_clock(n); }
+        result("RESET disables the channels ($4015 = 0)", loaded && !n->s.apu.sq[0].lc.len && !n->s.apu.sq[1].lc.len && !(apu_status(n, 0) & 0x0F), NULL);
+        nes_destroy(n);
+    }
+    {
+        /* The frame counter stands still while RESET is held and restarts at the release: the first
+         * frame IRQ flag comes 29831 cycles after the last held cycle W when W is even, 29830 when it
+         * is odd, however long the button was held. The first instruction is fetched at W+9, so the
+         * restart acts like a $4017 write 9 or 10 cycles before it (blargg: "9 to 12 clocks"). */
+        long want[2] = { 29831, 29830 }; int ok = 1, still = 1;
+        for (int held = 0; held < 2; held++) for (int par = 0; par < 2; par++) {
+            Nes *n = nes_create(); nes_power(n);
+            n->s.cpu.cycles = 5000 + (uint64_t)par;
+            apu_reset_line(n, 1);
+            for (int k = 0; held && k < 4 * 29782; k++) { n->s.cpu.cycles++; nes_cpu_clock(n); still &= !(n->s.cpu.irq_src & IRQ_FRAME); }
+            uint64_t W = n->s.cpu.cycles;
+            apu_reset_line(n, 0);
+            long rise = -1;
+            for (long k = 1; k < 40000 && rise < 0; k++) { n->s.cpu.cycles++; nes_cpu_clock(n); if (n->s.cpu.irq_src & IRQ_FRAME) rise = k; }
+            ok &= rise == want[W & 1];
+            if (rise != want[W & 1]) printf("    held %d, W parity %d: flag %ld cycles after W, want %ld\n", held, (int)(W & 1), rise, want[W & 1]);
+            nes_destroy(n);
+        }
+        result("no frame IRQ while RESET is held", still, NULL);
+        result("restart: flag at W+29831 (W even) / W+29830 (odd)", ok, NULL);
+        /* power-on follows the same rule: the CPU's reset sequence ends at cycle 7 */
+        nes_destroy(run(0));
+        Nes *n = nes_create(); char err[64];
+        nes_load_rom(n, rom, sizeof rom, 0, err, sizeof err);
+        uint64_t F = n->s.cpu.cycles + 1;                                /* the first opcode fetch */
+        long rise = -1;
+        for (long k = 1; k < 40000 && rise < 0; k++) { n->s.cpu.cycles++; nes_cpu_clock(n); if (n->s.cpu.irq_src & IRQ_FRAME) rise = (long)(n->s.cpu.cycles - F); }
+        result("power: flag 29821 cycles after the first fetch", F == 8 && rise == 29821, NULL);
+        nes_destroy(n);
+    }
     printf("\n%d checks, %d mismatches\n", checks, fails);
     return fails != 0;
 }

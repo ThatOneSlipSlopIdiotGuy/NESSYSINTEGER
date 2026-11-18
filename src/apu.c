@@ -12,7 +12,17 @@ static const uint16_t NOISE_P[16] = { 4,8,16,32,64,96,128,160,202,254,380,508,76
 static const uint16_t DMC_P[16] = { 428,380,340,320,286,254,226,214,190,160,142,128,106,84,72,54 };   /* in CPU cycles */
 static const int32_t FC_STEPS[2][6] = { {7457,14913,22371,29828,29829,29830}, {7457,14913,22371,29829,37281,37282} };
 static const uint8_t FC_TYPE[2][6] = { {1,2,1,0,2,0}, {1,2,1,0,2,0} };   /* 1 = quarter, 2 = half (+quarter) */
-static float pulse_tab[31], tnd_tab[203];
+static float pulse_tab[31];
+
+/* The 2A03's DACs and mixer (NESdev "APU Mixer"): pulse_out = 95.88 / (8128 / (p1 + p2) + 100) and
+ * tnd_out = 159.79 / (1 / (t / 8227 + n / 12241 + d / 22638) + 100). The wiki's 203-entry table
+ * indexed by 3t + 2n + d approximates the second formula with whole-number weights; the real ones
+ * are 2.75 : 1.85 : 1, which is what blargg's apu_mixer tests cancel against (triangle.s steps
+ * the DMC 41 levels over the triangle's 15), so the formula itself is used here. */
+static float tnd_out(int t, int no, int d) {
+    float x = t * (1.0f / 8227.0f) + no * (1.0f / 12241.0f) + d * (1.0f / 22638.0f);
+    return x > 0.0f ? 159.79f * x / (1.0f + 100.0f * x) : 0.0f;
+}
 
 static void lc_load(LenCtr *l, uint8_t enabled, uint8_t v) { if (enabled) { l->reload = LEN[v >> 3]; l->prev = l->len; } }
 static void lc_tick(LenCtr *l) { if (l->len && !l->halt) l->len--; }
@@ -72,26 +82,53 @@ void apu_dmc_fill(Nes *n, uint8_t v) {
     }
 }
 
+/* The frame counter restarts as the reset line goes high, as if the last value written to $4017 ($00
+ * after power-on) were written again on the cycle before the last cycle the line was held. With the
+ * CPU's 8-cycle reset sequence that puts the write 9 or 10 cycles before the first instruction at the
+ * reset vector, depending on the APU's even/odd phase, which nothing synchronises at reset.
+ * blargg measured "9 to 12 clocks" (blargg_apu_2005.07.30/09.reset_timing fails at 8, which is what
+ * a restart on the last held cycle gave); apu_reset/4017_timing now reads 9 or 10. */
+static void fc_restart(FrameCtr *f, uint64_t last_held) {
+    uint64_t w = last_held - 1;
+    f->cycle = 0; f->step = 0; f->inhibit = 0; f->block = 0;
+    f->new_val = (int16_t)(f->mode ? 0x80 : 0);
+    f->delay = (int8_t)(((w & 1) ? 4 : 3) - 1);       /* one of the write's cycles is already over */
+}
+
 void apu_power(Nes *n, int soft) {
     Apu *a = &n->s.apu;
     if (!pulse_tab[1]) {
-        for (int i = 1; i < 31; i++) pulse_tab[i] = (float)(95.52 / (8128.0 / i + 100.0));
-        for (int i = 1; i < 203; i++) tnd_tab[i] = (float)(163.67 / (24329.0 / i + 100.0));
+        for (int i = 1; i < 31; i++) pulse_tab[i] = (float)(95.88 / (8128.0 / i + 100.0));
     }
     uint8_t mode = a->fc.mode;
     uint64_t now = soft ? n->s.cpu.cycles : (uint64_t)-1;
     if (!soft) { memset(a, 0, sizeof *a); a->noise.lfsr = 1; a->sq[0].ch1 = 1; a->dmc.period = DMC_P[0] / 2 - 1; }
     a->sq[0].lc.len = a->sq[1].lc.len = a->tri.lc.len = a->noise.lc.len = 0;
+    /* power and reset both leave $4015 = 0: every channel disabled, so length counter loads are
+     * ignored until the program enables them (NESdev "CPU power up state", measured on an
+     * RP2A03G front-loader; blargg apu_reset/4015_cleared) */
+    a->sq[0].lc.enabled = a->sq[1].lc.enabled = a->tri.lc.enabled = a->noise.lc.enabled = 0;
+    a->sq[0].lc.reload = a->sq[1].lc.reload = a->tri.lc.reload = a->noise.lc.reload = 0;   /* a load from the cycle before */
     Dmc *d = &a->dmc;
     d->remain = 0; d->irq_en = 0; d->buf_empty = 1; d->bits = 8; d->silence = 1;
     d->start_delay = d->disable_delay = 0; d->act_prev = 0; d->wrap_empty_cyc = ~(uint64_t)0;
     d->level &= 1;
     a->fc_clear = 0;
     n->s.cpu.irq_src &= (uint8_t)~(IRQ_FRAME | IRQ_DMC);
-    FrameCtr *f = &a->fc;   /* acts as if $4017 was written just before the reset vector is fetched */
-    f->cycle = 0; f->step = 0; f->mode = soft ? mode : 0;
-    f->new_val = (int16_t)(f->mode ? 0x80 : 0); f->delay = (int8_t)((now & 1) ? 4 : 3);
-    f->inhibit = 0; f->block = 0;
+    a->fc.mode = soft ? mode : 0;
+    fc_restart(&a->fc, now);
+}
+
+/* The reset line. Asserting it silences the APU and stops the frame counter; releasing it
+ * restarts the frame counter (fc_restart). The delay from that restart to the first instruction
+ * is the same at power and at reset however long the button is held (blargg apu_reset/4017_timing),
+ * so the restart belongs to the release. Called between CPU cycles: cpu.cycles is the last held one. */
+void apu_reset_line(Nes *n, int asserted) {
+    Apu *a = &n->s.apu;
+    if (asserted) { apu_power(n, 1); a->fc.held = 1; return; }
+    a->fc.held = 0;
+    fc_restart(&a->fc, n->s.cpu.cycles);
+    n->s.cpu.irq_src &= (uint8_t)~IRQ_FRAME;
 }
 
 static void fc_run(Nes *n) {
@@ -126,7 +163,7 @@ static void mix(Nes *n) {
     }
     t = a->tri.pos < 16 ? 15 - a->tri.pos : a->tri.pos - 16;
     if (a->noise.lc.len && !(a->noise.lfsr & 1)) no = env_out(&a->noise.env);
-    a->acc += cart_audio_path(n, pulse_tab[p1 + p2] + tnd_tab[3 * t + 2 * no + a->dmc.level]);
+    a->acc += cart_audio_path(n, pulse_tab[p1 + p2] + tnd_out(t, no, a->dmc.level));
     a->acc_n++;
     a->phase += AUDIO_RATE;
     if (a->phase >= NES_CPU_HZ) {
@@ -153,7 +190,7 @@ void apu_cycle(Nes *n) {
         cpu_start_dmc_dma(n);
     }
     if (get && a->fc_clear) { n->s.cpu.irq_src &= (uint8_t)~IRQ_FRAME; a->fc_clear = 0; }      /* put->get edge */
-    fc_run(n);
+    if (!a->fc.held) fc_run(n);
     for (int i = 0; i < 2; i++) {
         Pulse *q = &a->sq[i];
         if (q->timer == 0) { q->timer = (uint16_t)(q->period * 2 + 1); q->pos = (q->pos - 1) & 7; } else q->timer--;

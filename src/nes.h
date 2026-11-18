@@ -8,6 +8,8 @@
 #include "chips.h"
 #include <stddef.h>
 
+#define NESSYS_VERSION "0.7.3"          /* shown by the tools and written into their JSON reports */
+
 #define NES_W 256
 #define NES_H 240
 #define NES_CPU_HZ 1789773.0
@@ -69,7 +71,8 @@ typedef struct { uint8_t irq_en, loop, level, buf, buf_empty, shift, bits, silen
                  uint16_t period, timer, samp_addr, samp_len, addr, remain; uint8_t act_prev;
                  uint8_t reloaded;   /* the timer reloaded during the current CPU cycle */
                  uint64_t wrap_empty_cyc; } Dmc;
-typedef struct { int32_t cycle; uint8_t step, mode, inhibit, block; int16_t new_val; int8_t delay; } FrameCtr;
+typedef struct { int32_t cycle; uint8_t step, mode, inhibit, block; int16_t new_val; int8_t delay;
+                 uint8_t held;   /* the reset line is held: the sequencer is stopped */ } FrameCtr;
 typedef struct {
     Pulse sq[2]; Tri tri; Noise noise; Dmc dmc; FrameCtr fc; uint8_t fc_clear;
     double acc, phase, hp1_in, hp1_out, hp2_in, hp2_out, lp_out; uint32_t acc_n;
@@ -163,6 +166,7 @@ void nes_destroy(Nes *n);
 int nes_load_rom(Nes *n, const uint8_t *data, size_t size, int hotswap, char *err, size_t errlen);
 void nes_power(Nes *n);
 void nes_reset(Nes *n);
+void apu_reset_line(Nes *n, int asserted);
 void nes_run_frame(Nes *n);
 size_t nes_state_size(void);
 void nes_save_state(Nes *n, uint8_t *buf);

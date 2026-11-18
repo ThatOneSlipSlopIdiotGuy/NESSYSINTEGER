@@ -301,7 +301,7 @@ void nes_power(Nes *n) {
 void nes_reset(Nes *n) {
     n->lock_dead = n->lock_frames = n->lock_low = 0;     /* the reset button also resets the 10NES lock */
     if (n->console == CON_NES) ppu_power(n, 1);   /* only the front-loader's reset line reaches the PPU */
-    apu_power(n, 1);
+    apu_reset_line(n, 1); apu_reset_line(n, 0);   /* a press too short to measure */
     if (n->has_rom) cpu_power(n, 1);
 }
 
@@ -353,7 +353,7 @@ void nes_run_frame(Nes *n) {
     int hold = btn || n->lock_low;
     if (hold && !n->in_reset) {
         n->in_reset = 1;
-        apu_power(n, 1);
+        apu_reset_line(n, 1);
         if (n->console == CON_NES) {
             ppu_power(n, 1); n->s.ppu.held = 1;
             for (int i = 0; i < NES_W * NES_H; i++) n->fb[i] = 0x0F;
@@ -361,6 +361,7 @@ void nes_run_frame(Nes *n) {
     } else if (!hold && n->in_reset) {
         n->in_reset = 0;
         if (n->console == CON_NES) { n->s.ppu.held = 0; ppu_power(n, 1); }
+        apu_reset_line(n, 0);
         cpu_power(n, 1);                            /* the 6502 runs its reset sequence as the line goes high */
     }
     for (int i = 0; i < n->nfreeze; i++)                  /* RAM freeze ("Action Replay" style) */
