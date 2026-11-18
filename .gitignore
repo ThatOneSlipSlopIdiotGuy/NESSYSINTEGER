@@ -28,3 +28,7 @@ nessysinteger.ini
 *.nes
 *.fds
 !/tests/roms/*.nes
+
+# Python bytecode and the test-suite runner's default output folder
+__pycache__/
+/suite_results/

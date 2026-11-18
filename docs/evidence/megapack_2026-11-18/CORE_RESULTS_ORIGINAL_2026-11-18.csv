@@ -1,0 +1,380 @@
+test,area,phase,ram,mode,status,rc,seconds,evidence,log,output_excerpt
+nes-test-roms/instr_test-v5/all_instrs.nes,CPU,0,,gate,FAIL,1,8.236,trusted $6000 suite returned nonzero,logs/nes-test-roms_instr_test-v5_all_instrs.nes_phase0.txt,result $80: Running test 10 of 16
+nes-test-roms/instr_test-v5/official_only.nes,CPU,0,,gate,FAIL,1,8.539,trusted $6000 suite returned nonzero,logs/nes-test-roms_instr_test-v5_official_only.nes_phase0.txt,result $80: Running test 16 of 16
+nes-test-roms/instr_test-v5/rom_singles/01-basics.nes,CPU,0,,gate,PASS,0,0.152,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_01-basics.nes_phase0.txt,"result $00: 
+01-basics
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/02-implied.nes,CPU,0,,gate,PASS,0,0.438,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_02-implied.nes_phase0.txt,"result $00: 
+02-implied
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/03-immediate.nes,CPU,0,,gate,PASS,0,0.391,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_03-immediate.nes_phase0.txt,"result $00: 
+03-immediate
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/04-zero_page.nes,CPU,0,,gate,PASS,0,0.495,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_04-zero_page.nes_phase0.txt,"result $00: 
+04-zero_page
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/05-zp_xy.nes,CPU,0,,gate,PASS,0,1.054,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_05-zp_xy.nes_phase0.txt,"result $00: 
+05-zp_xy
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/06-absolute.nes,CPU,0,,gate,PASS,0,0.477,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_06-absolute.nes_phase0.txt,"result $00: 
+06-absolute
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/07-abs_xy.nes,CPU,0,,gate,PASS,0,1.4,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_07-abs_xy.nes_phase0.txt,"result $00: 
+07-abs_xy
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/08-ind_x.nes,CPU,0,,gate,PASS,0,0.609,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_08-ind_x.nes_phase0.txt,"result $00: 
+08-ind_x
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/09-ind_y.nes,CPU,0,,gate,PASS,0,0.587,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_09-ind_y.nes_phase0.txt,"result $00: 
+09-ind_y
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/10-branches.nes,CPU,0,,gate,PASS,0,0.21,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_10-branches.nes_phase0.txt,"result $00: 
+10-branches
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/11-stack.nes,CPU,0,,gate,PASS,0,0.67,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_11-stack.nes_phase0.txt,"result $00: 
+11-stack
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/12-jmp_jsr.nes,CPU,0,,gate,PASS,0,0.122,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_12-jmp_jsr.nes_phase0.txt,"result $00: 
+12-jmp_jsr
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/13-rts.nes,CPU,0,,gate,PASS,0,0.131,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_13-rts.nes_phase0.txt,"result $00: 
+13-rts
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/14-rti.nes,CPU,0,,gate,PASS,0,0.118,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_14-rti.nes_phase0.txt,"result $00: 
+14-rti
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/15-brk.nes,CPU,0,,gate,PASS,0,0.166,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_15-brk.nes_phase0.txt,"result $00: 
+15-brk
+
+Passed"
+nes-test-roms/instr_test-v5/rom_singles/16-special.nes,CPU,0,,gate,PASS,0,0.129,explicit pass text + success exit,logs/nes-test-roms_instr_test-v5_rom_singles_16-special.nes_phase0.txt,"result $00: 
+16-special
+
+Passed"
+nes-test-roms/instr_timing/instr_timing.nes,CPU,0,,gate,PASS,0,7.622,explicit pass text + success exit,logs/nes-test-roms_instr_timing_instr_timing.nes_phase0.txt,"result $00: 
+2-branch_timing
+
+Passed
+All 2 tests passed"
+nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes,CPU,0,,gate,PASS,0,6.38,explicit pass text + success exit,logs/nes-test-roms_instr_timing_rom_singles_1-instr_timing.nes_phase0.txt,"result $00: Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed"
+nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes,CPU,0,,gate,PASS,0,0.584,explicit pass text + success exit,logs/nes-test-roms_instr_timing_rom_singles_2-branch_timing.nes_phase0.txt,"result $00: 
+2-branch_timing
+
+Passed"
+nes-test-roms/cpu_interrupts_v2/cpu_interrupts.nes,CPU,0,,gate,PASS,0,4.04,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_cpu_interrupts.nes_phase0.txt,"result $00: test_jmp
+T+ CK PC
+00 02 04 
+01 01 04 
+02 03 07 
+03 02 07 
+04 01 07 
+05 02 08 
+06 01 08 
+07 03 08 
+08 02 08 
+09 01 08 
+
+test_branch_not_taken
+T+ CK PC
+00 02 04 
+01 01 04 
+02 02 06 
+03 01 06 
+04 02 07 
+05 01 07 
+06 04 0A 
+07 03 0A 
+08 02 0A 
+09 01 0A 
+
+test_branch_taken_pagecross
+T+ CK PC
+00 02 0D 
+01 01 0D 
+02 04 00 
+03 03 00 
+04 02 00 
+05 01 00 
+06 04 03 
+07 03 03 
+08 02 03 
+09 01 03 
+
+test_branch_taken
+T+ CK PC
+00 02 04 
+01 01 04 
+02 03 07 
+03 02 07 
+04 05 0A 
+05 04 0A 
+06 03 0A 
+07 02 0A 
+08 01 0A 
+09 03 0A 
+
+
+5-branch_delays_irq
+
+Passed
+All 5 tests passed"
+nes-test-roms/cpu_interrupts_v2/rom_singles/1-cli_latency.nes,CPU,0,,gate,PASS,0,0.132,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_rom_singles_1-cli_latency.nes_phase0.txt,"result $00: 
+1-cli_latency
+
+Passed"
+nes-test-roms/cpu_interrupts_v2/rom_singles/2-nmi_and_brk.nes,CPU,0,,gate,PASS,0,0.55,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_rom_singles_2-nmi_and_brk.nes_phase0.txt,"result $00: NMI BRK 00
+27  36  00 
+26  36  00 
+26  36  00 
+36  00  00 
+36  00  00 
+36  00  00 
+36  00  00 
+36  00  00 
+27  36  00 
+27  36  00 
+
+2-nmi_and_brk
+
+Passed"
+nes-test-roms/cpu_interrupts_v2/rom_singles/3-nmi_and_irq.nes,CPU,0,,gate,PASS,0,0.57,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_rom_singles_3-nmi_and_irq.nes_phase0.txt,"result $00: NMI BRK
+23  00 
+21  00 
+21  00 
+20  00 
+20  00 
+20  00 
+20  00 
+20  00 
+20  00 
+20  00 
+25  20 
+25  20 
+
+3-nmi_and_irq
+
+Passed"
+nes-test-roms/cpu_interrupts_v2/rom_singles/4-irq_and_dma.nes,CPU,0,,gate,PASS,0,0.507,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_rom_singles_4-irq_and_dma.nes_phase0.txt,"result $00: 0 +0
+1 +1
+1 +2
+2 +3
+2 +4
+4 +5
+4 +6
+7 +7
+7 +8
+7 +9
+7 +10
+8 +11
+8 +12
+8 +13
+...
+8 +524
+8 +525
+8 +526
+9 +527
+
+4-irq_and_dma
+
+Passed"
+nes-test-roms/cpu_interrupts_v2/rom_singles/5-branch_delays_irq.nes,CPU,0,,gate,PASS,0,2.517,explicit pass text + success exit,logs/nes-test-roms_cpu_interrupts_v2_rom_singles_5-branch_delays_irq.nes_phase0.txt,"result $00: test_jmp
+T+ CK PC
+00 02 04 
+01 01 04 
+02 03 07 
+03 02 07 
+04 01 07 
+05 02 08 
+06 01 08 
+07 03 08 
+08 02 08 
+09 01 08 
+
+test_branch_not_taken
+T+ CK PC
+00 02 04 
+01 01 04 
+02 02 06 
+03 01 06 
+04 02 07 
+05 01 07 
+06 04 0A 
+07 03 0A 
+08 02 0A 
+09 01 0A 
+
+test_branch_taken_pagecross
+T+ CK PC
+00 02 0D 
+01 01 0D 
+02 04 00 
+03 03 00 
+04 02 00 
+05 01 00 
+06 04 03 
+07 03 03 
+08 02 03 
+09 01 03 
+
+test_branch_taken
+T+ CK PC
+00 02 04 
+01 01 04 
+02 03 07 
+03 02 07 
+04 05 0A 
+05 04 0A 
+06 03 0A 
+07 02 0A 
+08 01 0A 
+09 03 0A 
+
+
+5-branch_delays_irq
+
+Passed"
+nes-test-roms/cpu_reset/ram_after_reset.nes,CPU,0,,gate,PASS,0,0.982,explicit pass text + success exit,logs/nes-test-roms_cpu_reset_ram_after_reset.nes_phase0.txt,"result $00: 
+ram_after_reset
+
+Passed"
+nes-test-roms/cpu_reset/registers.nes,CPU,0,,gate,PASS,0,1.062,explicit pass text + success exit,logs/nes-test-roms_cpu_reset_registers.nes_phase0.txt,"result $00: A  X  Y  P  S
+34 56 78 FF 0F 
+
+registers
+
+Passed"
+nes-test-roms/cpu_dummy_writes/cpu_dummy_writes_oam.nes,CPU,0,,gate,PASS,0,1.801,explicit pass text + success exit,logs/nes-test-roms_cpu_dummy_writes_cpu_dummy_writes_oam.nes_phase0.txt,"test can be
+used to see if the CPU in the
+emulator is built properly.
+
+[0;37m[0;37mTesting OAM.  The screen will go blank for a moment now.
+[0;37mOK; [0;37mVerifying opcodes...
+[1;34m0E[1;34m2E[1;34m4E[1;34m6E[1;34mCE[1;34mEE [1;34m1E[1;34m3E[1;34m5E[1;34m7E[1;34mDE[1;34mFE 
+[1;34m0F[1;34m2F[1;34m4F[1;34m6F[1;34mCF[1;34mEF [1;34m1F[1;34m3F[1;34m5F[1;34m7F[1;34mDF[1;34mFF 
+[1;34m03[1;34m23[1;34m43[1;34m63[1;34mC3[1;34mE3 [1;34m13[1;34m33[1;34m53[1;34m73[1;34mD3[1;34mF3 
+[1;34m1B[1;34m3B[1;34m5B[1;34m7B[1;34mDB[1;34mFB              
+[0;37m
+Passed"
+nes-test-roms/cpu_dummy_writes/cpu_dummy_writes_ppumem.nes,CPU,0,,gate,PASS,0,1.516,explicit pass text + success exit,logs/nes-test-roms_cpu_dummy_writes_cpu_dummy_writes_ppumem.nes_phase0.txt,"- 0[1;34m- 0[1;34m0[1;34m
+[0;33m  R6:[1;34m 0[1;34m- 0[1;34m- 0[1;34m0[1;34m 0[1;34m- 0[1;34m- 0[1;34m- 0[1;34m- 0[1;34m0[1;34m
+[0;37mOK; [0;37mVerifying opcodes...
+[1;34m0E[1;34m2E[1;34m4E[1;34m6E[1;34mCE[1;34mEE [1;34m1E[1;34m3E[1;34m5E[1;34m7E[1;34mDE[1;34mFE 
+[1;34m0F[1;34m2F[1;34m4F[1;34m6F[1;34mCF[1;34mEF [1;34m1F[1;34m3F[1;34m5F[1;34m7F[1;34mDF[1;34mFF 
+[1;34m03[1;34m23[1;34m43[1;34m63[1;34mC3[1;34mE3 [1;34m13[1;34m33[1;34m53[1;34m73[1;34mD3[1;34mF3 
+[1;34m1B[1;34m3B[1;34m5B[1;34m7B[1;34mDB[1;34mFB              
+[0;37m
+Passed"
+nes-test-roms/apu_reset/4015_cleared.nes,APU,0,,gate,PASS,0,0.349,explicit pass text + success exit,logs/nes-test-roms_apu_reset_4015_cleared.nes_phase0.txt,"result $00: 
+4015_cleared
+
+Passed"
+nes-test-roms/apu_reset/4017_timing.nes,APU,0,,gate,PASS,0,0.406,explicit pass text + success exit,logs/nes-test-roms_apu_reset_4017_timing.nes_phase0.txt,"result $00: Delay after effective $4017 write: 8
+
+4017_timing
+
+Passed"
+nes-test-roms/apu_reset/4017_written.nes,APU,0,,gate,FAIL,1,0.483,headless output explicitly reported failure,logs/nes-test-roms_apu_reset_4017_written.nes_phase0.txt,"result $03: 
+At reset, $4017 should should be rewritten with last value written
+
+4017_written
+
+Failed #3"
+nes-test-roms/apu_reset/irq_flag_cleared.nes,APU,0,,gate,PASS,0,0.263,explicit pass text + success exit,logs/nes-test-roms_apu_reset_irq_flag_cleared.nes_phase0.txt,"result $00: 
+irq_flag_cleared
+
+Passed"
+nes-test-roms/apu_reset/len_ctrs_enabled.nes,APU,0,,gate,PASS,0,0.271,explicit pass text + success exit,logs/nes-test-roms_apu_reset_len_ctrs_enabled.nes_phase0.txt,"result $00: 
+len_ctrs_enabled
+
+Passed"
+nes-test-roms/apu_reset/works_immediately.nes,APU,0,,gate,PASS,0,0.367,explicit pass text + success exit,logs/nes-test-roms_apu_reset_works_immediately.nes_phase0.txt,"result $00: 
+works_immediately
+
+Passed"
+nes-test-roms/ppu_open_bus/ppu_open_bus.nes,PPU,0,,gate,PASS,0,0.965,explicit pass text + success exit,logs/nes-test-roms_ppu_open_bus_ppu_open_bus.nes_phase0.txt,"result $00: 
+ppu_open_bus
+
+Passed"
+nes-test-roms/oam_read/oam_read.nes,PPU,0,,gate,PASS,0,0.209,explicit pass text + success exit,logs/nes-test-roms_oam_read_oam_read.nes_phase0.txt,"result $00: ----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed"
+nes-test-roms/oam_stress/oam_stress.nes,PPU,0,,gate,PASS,0,6.335,explicit pass text + success exit,logs/nes-test-roms_oam_stress_oam_stress.nes_phase0.txt,"result $00: ----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_stress
+
+Passed"
+AccuracyCoin/AccuracyCoin.nes,All,0,4,coin,PASS,0,22.509,accuracycoin_run exit code (README defines 0 = all tests passed),logs/AccuracyCoin_phase0_ram4.txt,"Pass        INC $4014
+  Pass        Rendering Flag Behavior
+  Pass        $2007 read w/ rendering
+  Pass        $2004 Stress Test
+  Pass        $2007 Stress Test
+[Advanced Background Evaluation]
+  Pass        Attributes As Tiles
+  Pass        Stale BG Shift Registers
+  Pass        BG Serial In
+  Pass        ALE + Read
+  Pass        Hybrid Addresses
+[Advanced Sprite Evaluation]
+  Pass        Sprites On Scanline 0
+  Pass        Stale Sprite Shift Regs
+  Pass        Frozen OAM2 Increment
+  Pass        Misaligned OAM2 Address
+147/147 passed (CPU/PPU alignment 0, power-on RAM mode 4, 4320 frames)"
