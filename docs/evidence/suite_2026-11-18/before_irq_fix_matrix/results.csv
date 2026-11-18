@@ -1,0 +1,2141 @@
+id,suite,area,align,ram,verdict,status,detail,resets,frames_run,seconds,text,command
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,0,0,PASS,0,status $00,0,280,1.124,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 0 -r 0 -q -j /tmp/nessys_xgoi4ujs.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,0,4,PASS,0,status $00,0,280,1.021,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 0 -r 4 -q -j /tmp/nessys_x5faw1bh.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,1,0,PASS,0,status $00,0,280,1.022,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 1 -r 0 -q -j /tmp/nessys_d0mrrcw3.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,1,4,PASS,0,status $00,0,280,0.977,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 1 -r 4 -q -j /tmp/nessys_5o6v4v0c.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,2,0,PASS,0,status $00,0,280,1.012,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 2 -r 0 -q -j /tmp/nessys_5w02y_vl.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,2,4,PASS,0,status $00,0,280,1.022,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 2 -r 4 -q -j /tmp/nessys_t6kobh8v.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,3,0,PASS,0,status $00,0,280,1.013,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 3 -r 0 -q -j /tmp/nessys_jkjpx7g5.json
+cpu_exec_space/test_cpu_exec_space_apu,cpu_exec_space,CPU,3,4,PASS,0,status $00,0,280,1.016,"[0;37mTEST: test_cpu_exec_space_apu
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In this test, it is also
+verified that not only all
+write-only APU I/O ports
+return the open bus, but
+also the unallocated I/O
+space in $4018..$40FF.
+
+[0;37m[1;34m0022 4000 4001 4002 4003 4004 4005 4006 4007 4008 4009 400A 400B 400C 400D 400E 400F 4010 4011 4012 4013 4014 4016 4017 4018 4019 401A 401B 401C 401D 401E 401F 4020 4021 4022 4023 4024 4025 4026 4027 4028 4029 402A 402B 402C 402D 402E 402F 4030 4031 4032 4033 4034 4035 4036 4037 4038 4039 403A 403B 403C 403D 403E 403F 4040 4041 4042 4043 4044 4045 4046 4047 4048 4049 404A 404B 404C 404D 404E 404F 4050 4051 4052 4053 4054 4055 4056 4057 4058 4059 405A 405B 405C 405D 405E 405F 4060 4061 4062 4063 4064 4065 4066 4067 4068 4069 406A 406B 406C 406D 406E 406F 4070 4071 4072 4073 4074 4075 4076 4077 4078 4079 407A 407B 407C 407D 407E 407F 4080 4081 4082 4083 4084 4085 4086 4087 4088 4089 408A 408B 408C 408D 408E 408F 4090 4091 4092 4093 4094 4095 4096 4097 4098 4099 409A 409B 409C 409D 409E 409F 40A0 40A1 40A2 40A3 40A4 40A5 40A6 40A7 40A8 40A9 40AA 4",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_apu.nes -f 900 -a 3 -r 4 -q -j /tmp/nessys_b2rgef7x.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,0,0,PASS,0,status $00,0,41,0.143,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_7w3ilrtb.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,0,4,PASS,0,status $00,0,41,0.136,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_50d2ui9e.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,1,0,PASS,0,status $00,0,41,0.137,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_0bqd4hoc.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,1,4,PASS,0,status $00,0,41,0.135,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_dkf3mw9f.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,2,0,PASS,0,status $00,0,41,0.135,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_9wqi3a5x.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,2,4,PASS,0,status $00,0,41,0.133,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_xsf0k7_q.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,3,0,PASS,0,status $00,0,41,0.147,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_bj4bx0_c.json
+cpu_exec_space/test_cpu_exec_space_ppuio,cpu_exec_space,CPU,3,4,PASS,0,status $00,0,41,0.139,"[0;37mTEST:test_cpu_exec_space_ppuio
+[0;33mThis program verifies that the
+CPU can execute code from any
+possible location that it can
+address, including I/O space.
+
+In addition, it will be tested
+that an RTS instruction does a
+dummy read of the byte that
+immediately follows the
+instructions.
+
+[0;37m[1;34mJSR+RTS TEST OK
+JMP+RTS TEST OK
+RTS+RTS TEST OK
+JMP+RTI TEST OK
+JMP+BRK TEST OK
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/cpu_exec_space/test_cpu_exec_space_ppuio.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_jhui8043.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,0,0,PASS,0,status $00,0,12,0.041,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_p5pqz5sa.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,0,4,PASS,0,status $00,0,12,0.036,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_fetggf4a.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,1,0,PASS,0,status $00,0,12,0.035,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_1n73wk2c.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,1,4,PASS,0,status $00,0,12,0.037,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_z67ff8vf.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,2,0,PASS,0,status $00,0,12,0.036,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_c_z298q1.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,2,4,PASS,0,status $00,0,12,0.037,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_ju3k17nr.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,3,0,PASS,0,status $00,0,12,0.037,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_anwr47pc.json
+instr_misc/rom_singles/01-abs_x_wrap,instr_misc,CPU,3,4,PASS,0,status $00,0,12,0.036,"
+01-abs_x_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/01-abs_x_wrap.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_x9_o2avd.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,0,0,PASS,0,status $00,0,12,0.036,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_o_v80yg6.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,0,4,PASS,0,status $00,0,12,0.038,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_zkvhiwk3.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,1,0,PASS,0,status $00,0,12,0.037,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_6adtjnc0.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,1,4,PASS,0,status $00,0,12,0.037,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_w2qaecmz.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,2,0,PASS,0,status $00,0,12,0.039,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_826kyu7q.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,2,4,PASS,0,status $00,0,12,0.036,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_av88qztv.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,3,0,PASS,0,status $00,0,12,0.038,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_n2jaa7pi.json
+instr_misc/rom_singles/02-branch_wrap,instr_misc,CPU,3,4,PASS,0,status $00,0,12,0.037,"
+02-branch_wrap
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/02-branch_wrap.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_p1vd73b9.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,0,0,PASS,0,status $00,0,57,0.137,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_ac7ouppk.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,0,4,PASS,0,status $00,0,57,0.136,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_j6u042cm.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,1,0,PASS,0,status $00,0,57,0.141,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_knqnwfun.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,1,4,PASS,0,status $00,0,57,0.136,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_f83ugafa.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,2,0,PASS,0,status $00,0,57,0.133,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_knkzfbtr.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,2,4,PASS,0,status $00,0,57,0.135,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_ieyaq4oe.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,3,0,PASS,0,status $00,0,57,0.131,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_xivchrs4.json
+instr_misc/rom_singles/03-dummy_reads,instr_misc,CPU,3,4,PASS,0,status $00,0,57,0.131,"
+03-dummy_reads
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/03-dummy_reads.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_t7qfhino.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,0,0,PASS,0,status $00,0,142,0.324,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_gu361dq6.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,0,4,PASS,0,status $00,0,142,0.332,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_pe5dmlqk.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,1,0,PASS,0,status $00,0,142,0.315,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_l09943jk.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,1,4,PASS,0,status $00,0,142,0.321,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_rbjfpyh3.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,2,0,PASS,0,status $00,0,142,0.322,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_mlnlmxz8.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,2,4,PASS,0,status $00,0,142,0.394,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_lsk6_hqw.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,3,0,PASS,0,status $00,0,142,0.315,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_5q8bg23j.json
+instr_misc/rom_singles/04-dummy_reads_apu,instr_misc,CPU,3,4,PASS,0,status $00,0,142,0.33,"
+04-dummy_reads_apu
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_misc/rom_singles/04-dummy_reads_apu.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_qzklazj1.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,0,0,PASS,0,status $00,0,1013,3.812,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 0 -r 0 -q -j /tmp/nessys_msqtkn44.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,0,4,PASS,0,status $00,0,1013,3.819,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 0 -r 4 -q -j /tmp/nessys_s1juqwph.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,1,0,PASS,0,status $00,0,1013,3.609,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 1 -r 0 -q -j /tmp/nessys_hu743z3v.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,1,4,PASS,0,status $00,0,1013,3.762,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 1 -r 4 -q -j /tmp/nessys__y9r9xew.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,2,0,PASS,0,status $00,0,1013,3.596,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 2 -r 0 -q -j /tmp/nessys_ubhjfdzs.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,2,4,PASS,0,status $00,0,1013,3.62,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 2 -r 4 -q -j /tmp/nessys_x7h9gicw.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,3,0,PASS,0,status $00,0,1013,3.601,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 3 -r 0 -q -j /tmp/nessys_v0f5dmbp.json
+instr_timing/rom_singles/1-instr_timing,instr_timing,CPU,3,4,PASS,0,status $00,0,1013,3.686,"Instruction timing test
+
+Takes about 25 seconds. Doesn't time the 8 branches and 12 illegal instructions.
+
+Official instructions...
+
+NOPs and alternate SBC...
+
+Unofficial instructions...
+
+1-instr_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes -f 3100 -a 3 -r 4 -q -j /tmp/nessys_e4dknri0.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,0,0,PASS,0,status $00,0,141,0.319,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_izq59al5.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,0,4,PASS,0,status $00,0,141,0.312,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_wzpxlesx.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,1,0,PASS,0,status $00,0,141,0.293,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_5tdhr9c9.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,1,4,PASS,0,status $00,0,141,0.31,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_dc1cvsew.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,2,0,PASS,0,status $00,0,141,0.302,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_lah8gurq.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,2,4,PASS,0,status $00,0,141,0.297,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_su5fc_lo.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,3,0,PASS,0,status $00,0,141,0.318,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_gexiqlyo.json
+instr_timing/rom_singles/2-branch_timing,instr_timing,CPU,3,4,PASS,0,status $00,0,141,0.41,"
+2-branch_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_k2os_lgf.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,0,0,PASS,0,status $00,0,30,0.094,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_rwuh_bbo.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,0,4,PASS,0,status $00,0,30,0.094,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_ur0dltcp.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,1,0,PASS,0,status $00,0,30,0.083,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_9h1up6yq.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,1,4,PASS,0,status $00,0,30,0.083,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_95klyxpe.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,2,0,PASS,0,status $00,0,30,0.082,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_ws1z1_m0.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,2,4,PASS,0,status $00,0,30,0.086,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_5gbeamj1.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,3,0,PASS,0,status $00,0,30,0.084,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_ixa24b3b.json
+mmc3_test_2/rom_singles/1-clocking,mmc3_test_2,Mapper/MMC3,3,4,PASS,0,status $00,0,30,0.082,"
+1-clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/1-clocking.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_b1s3z0mr.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,0,0,PASS,0,status $00,0,31,0.086,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_uh0lec9f.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,0,4,PASS,0,status $00,0,31,0.1,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_r1ud4hrp.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,1,0,PASS,0,status $00,0,31,0.09,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_a579da1_.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,1,4,PASS,0,status $00,0,31,0.121,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_mbnby_u3.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,2,0,PASS,0,status $00,0,31,0.107,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_kh21li6l.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,2,4,PASS,0,status $00,0,31,0.103,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_va7iyay_.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,3,0,PASS,0,status $00,0,31,0.092,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_d1_7m0b_.json
+mmc3_test_2/rom_singles/2-details,mmc3_test_2,Mapper/MMC3,3,4,PASS,0,status $00,0,31,0.087,"
+2-details
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/2-details.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_k_cla5fu.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,0,0,PASS,0,status $00,0,28,0.079,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_vgclwzo2.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,0,4,PASS,0,status $00,0,28,0.078,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_v2u0l5uw.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,1,0,PASS,0,status $00,0,28,0.075,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_8_r3on7e.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,1,4,PASS,0,status $00,0,28,0.078,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_9sc39cqz.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,2,0,PASS,0,status $00,0,28,0.078,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_203k17om.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,2,4,PASS,0,status $00,0,28,0.075,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_d5ktynf8.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,3,0,PASS,0,status $00,0,28,0.077,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_14joapwz.json
+mmc3_test_2/rom_singles/3-A12_clocking,mmc3_test_2,Mapper/MMC3,3,4,PASS,0,status $00,0,28,0.076,"
+3-A12_clocking
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/3-A12_clocking.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_ehjyafil.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,0,0,PASS,0,status $00,0,325,0.782,"
+4-scanline_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 0 -r 0 -q -j /tmp/nessys_6khy05dc.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,0,4,PASS,0,status $00,0,325,0.783,"
+4-scanline_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 0 -r 4 -q -j /tmp/nessys_zz3bup63.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,1,0,FAIL,2,status $02,0,63,0.178,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 1 -r 0 -q -j /tmp/nessys_62z71e1t.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,1,4,FAIL,2,status $02,0,63,0.178,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 1 -r 4 -q -j /tmp/nessys_5hs2nmbj.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,2,0,FAIL,2,status $02,0,63,0.163,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 2 -r 0 -q -j /tmp/nessys_j63fjp2d.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,2,4,FAIL,2,status $02,0,63,0.163,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 2 -r 4 -q -j /tmp/nessys_izvljyeb.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,3,0,FAIL,2,status $02,0,63,0.165,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 3 -r 0 -q -j /tmp/nessys_xlmga925.json
+mmc3_test_2/rom_singles/4-scanline_timing,mmc3_test_2,Mapper/MMC3,3,4,FAIL,2,status $02,0,63,0.161,"
+Scanline 0 IRQ should occur later when $2000=$08
+
+4-scanline_timing
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/4-scanline_timing.nes -f 1000 -a 3 -r 4 -q -j /tmp/nessys_4n24v_8u.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,0,0,PASS,0,status $00,0,27,0.076,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_6495xbev.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,0,4,PASS,0,status $00,0,27,0.078,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_lsi34x2u.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,1,0,PASS,0,status $00,0,27,0.073,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_al3lzt98.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,1,4,PASS,0,status $00,0,27,0.079,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_wjk99e1q.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,2,0,PASS,0,status $00,0,27,0.073,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_j0_1f4c6.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,2,4,PASS,0,status $00,0,27,0.072,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_n49r5hqc.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,3,0,PASS,0,status $00,0,27,0.074,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_y_ss3ptn.json
+mmc3_test_2/rom_singles/5-MMC3,mmc3_test_2,Mapper/MMC3,3,4,PASS,0,status $00,0,27,0.074,"
+5-MMC3
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/5-MMC3.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_1kfc6z2y.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,0,0,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.097,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_i1xvxs78.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,0,4,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.106,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_oux5uz6u.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,1,0,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.095,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_orhtbiqa.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,1,4,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.093,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_0fs86bmx.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,2,0,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.091,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys__tjas3w9.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,2,4,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.096,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_tl5j100y.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,3,0,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.094,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_hiedsffj.json
+mmc3_test_2/rom_singles/6-MMC3_alt,mmc3_test_2,Mapper/MMC3,3,4,REVISION_DEPENDENT,2,status $02 (tests the MMC3A-style IRQ (reload to 0 raises no IRQ); MMC3B/C is emulated),0,32,0.112,"
+IRQ shouldn't be set when reloading to 0 due to counter naturally reaching 0 previously
+
+6-MMC3_alt
+
+Failed #2
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/mmc3_test_2/rom_singles/6-MMC3_alt.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_2px0238o.json
+oam_read/oam_read,oam_read,PPU,0,0,PASS,0,status $00,0,28,0.105,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_xns541z6.json
+oam_read/oam_read,oam_read,PPU,0,4,PASS,0,status $00,0,28,0.096,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_q6ou68ey.json
+oam_read/oam_read,oam_read,PPU,1,0,PASS,0,status $00,0,28,0.093,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_je566oqp.json
+oam_read/oam_read,oam_read,PPU,1,4,PASS,0,status $00,0,28,0.093,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_mm3drgk5.json
+oam_read/oam_read,oam_read,PPU,2,0,PASS,0,status $00,0,28,0.094,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_x7cysjce.json
+oam_read/oam_read,oam_read,PPU,2,4,PASS,0,status $00,0,28,0.093,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_fprbbg68.json
+oam_read/oam_read,oam_read,PPU,3,0,PASS,0,status $00,0,28,0.091,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_htyleq17.json
+oam_read/oam_read,oam_read,PPU,3,4,PASS,0,status $00,0,28,0.094,"----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+----------------
+
+oam_read
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/oam_read/oam_read.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_6ndisye0.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,0,0,PASS,0,status $00,0,251,0.535,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 0 -r 0 -q -j /tmp/nessys_j4z59di3.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,0,4,PASS,0,status $00,0,251,0.538,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 0 -r 4 -q -j /tmp/nessys_t8agrkdd.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,1,0,PASS,0,status $00,0,251,0.565,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 1 -r 0 -q -j /tmp/nessys_si5typda.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,1,4,PASS,0,status $00,0,251,0.538,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 1 -r 4 -q -j /tmp/nessys_9uy921pd.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,2,0,PASS,0,status $00,0,251,0.57,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 2 -r 0 -q -j /tmp/nessys_89wgvz9x.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,2,4,PASS,0,status $00,0,251,0.527,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 2 -r 4 -q -j /tmp/nessys_9rz1h24k.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,3,0,PASS,0,status $00,0,251,0.524,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 3 -r 0 -q -j /tmp/nessys_jhohusav.json
+ppu_open_bus/ppu_open_bus,ppu_open_bus,PPU,3,4,PASS,0,status $00,0,251,0.54,"
+ppu_open_bus
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_open_bus/ppu_open_bus.nes -f 800 -a 3 -r 4 -q -j /tmp/nessys_pxmmz4zr.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,0,0,PASS,0,status $00,0,1246,5.158,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 0 -r 0 -q -j /tmp/nessys_ly56fk67.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,0,4,PASS,0,status $00,0,1246,5.058,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 0 -r 4 -q -j /tmp/nessys_ljz9q92v.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,1,0,PASS,0,status $00,0,1246,5.012,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 1 -r 0 -q -j /tmp/nessys_7gsvcyy9.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,1,4,PASS,0,status $00,0,1246,5.145,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 1 -r 4 -q -j /tmp/nessys_o_md3nk3.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,2,0,PASS,0,status $00,0,1246,4.894,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 2 -r 0 -q -j /tmp/nessys_hxlw38yj.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,2,4,PASS,0,status $00,0,1246,6.32,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 2 -r 4 -q -j /tmp/nessys_aaof44mb.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,3,0,PASS,0,status $00,0,1246,4.996,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 3 -r 0 -q -j /tmp/nessys_ygdnjev5.json
+ppu_read_buffer/test_ppu_read_buffer,ppu_read_buffer,PPU,3,4,PASS,0,status $00,0,1246,5.005,"[0;37mTEST:test_ppu_read_buffer
+-----------------------------
+Testing basic PPU memory I/O.
+[0;37mPerforming tests that combine
+sprite 0 hit flag, $4014 DMA
+and the RAM mirroring...
+[0;33mGraphical artifacts during
+this test are OK and expected.
+
+[0;37m              Hi   No-Hi
+[0;37mDirect poke  [0;33m OK  [0;33m OK  
+[0;37mDMA with ROM  [0;33m OK  [0;33m OK  
+[0;37mDMA + PPU bus[0;33m OK  [0;33m OK  
+[0;37mDMA with RAM  
+
+[0;37m-----------------------------
+ This next test wil take a while.
+ In order to distract you with
+ entertainment, art is provided.
+ Contemplate on the art while
+ the test is in progress.
+
+
+
+[0;37m
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_read_buffer/test_ppu_read_buffer.nes -f 3800 -a 3 -r 4 -q -j /tmp/nessys_5xwa411x.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,145,0.329,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_qao19bdq.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,145,0.332,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_82kykdgx.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,145,0.326,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_kmmfhuby.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,145,0.327,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_bso4rtku.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,145,0.33,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_z9p6x1t7.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,145,0.319,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_ap55joyd.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,145,0.508,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_s0zwy7ao.json
+ppu_vbl_nmi/rom_singles/01-vbl_basics,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,145,0.663,"
+01-vbl_basics
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/01-vbl_basics.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_d6mm040y.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,176,0.809,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_e761d6fe.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,176,0.873,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_1d81rpq_.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,176,0.781,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_q1kptc78.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,176,0.813,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_xrzj0njq.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,176,0.932,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_fhjdouan.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,176,0.913,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_wpdxpcmh.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,176,0.795,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_vm87bxv2.json
+ppu_vbl_nmi/rom_singles/02-vbl_set_time,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,176,0.752,"T+ 1 2
+00 - V
+01 - V
+02 - V
+03 - V
+04 - -
+05 V -
+06 V -
+07 V -
+08 V -
+
+02-vbl_set_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/02-vbl_set_time.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_32j4d0g2.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,164,0.909,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_oo7tl43f.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,164,0.651,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_9ayc0omx.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,164,0.747,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_i97xwi5f.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,164,0.693,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_soi8_1eo.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,164,0.726,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_9fz9ye69.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,164,0.555,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_e4st_2wq.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,164,0.801,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_ak62eopv.json
+ppu_vbl_nmi/rom_singles/03-vbl_clear_time,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,164,0.776,"00 V
+01 V
+02 V
+03 V
+04 V
+05 V
+06 -
+07 -
+08 -
+
+03-vbl_clear_time
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/03-vbl_clear_time.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_ttgva6w5.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,37,0.102,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_1bk3uf0c.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,37,0.113,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_b9od4pcf.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,37,0.201,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_lq2rrimc.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,37,0.269,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_hdxv1_57.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,37,0.248,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_8od9cc18.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,37,0.13,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_ivk_bb6r.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,37,0.104,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_qhm_229s.json
+ppu_vbl_nmi/rom_singles/04-nmi_control,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,37,0.132,"
+04-nmi_control
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/04-nmi_control.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_zynfim5e.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,214,0.864,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 0 -r 0 -q -j /tmp/nessys_xnjsxexh.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,214,0.9,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 0 -r 4 -q -j /tmp/nessys_pfcs64as.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,214,0.934,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 1 -r 0 -q -j /tmp/nessys_xg5umlms.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,214,0.774,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 1 -r 4 -q -j /tmp/nessys_jkfy_0ca.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,214,0.918,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 2 -r 0 -q -j /tmp/nessys_am43q_8y.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,214,0.94,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 2 -r 4 -q -j /tmp/nessys_y4jk2f7s.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,214,0.618,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 3 -r 0 -q -j /tmp/nessys_yra42odm.json
+ppu_vbl_nmi/rom_singles/05-nmi_timing,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,214,0.874,"00 4
+01 4
+02 4
+03 3
+04 3
+05 3
+06 3
+07 3
+08 3
+09 2
+
+05-nmi_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/05-nmi_timing.nes -f 700 -a 3 -r 4 -q -j /tmp/nessys_cai3lcid.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,217,0.966,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 0 -r 0 -q -j /tmp/nessys_b85jroso.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,217,0.985,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 0 -r 4 -q -j /tmp/nessys_gejqdi73.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,217,1.011,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 1 -r 0 -q -j /tmp/nessys_qxfcw5nr.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,217,0.948,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 1 -r 4 -q -j /tmp/nessys_xpb150dy.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,217,0.967,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 2 -r 0 -q -j /tmp/nessys_ivo4orah.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,217,1.028,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 2 -r 4 -q -j /tmp/nessys_c6_no6dz.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,217,0.967,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 3 -r 0 -q -j /tmp/nessys_lpg6fpd7.json
+ppu_vbl_nmi/rom_singles/06-suppression,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,217,0.945,"00 - N
+01 - N
+02 - N
+03 - N
+04 - -
+05 V -
+06 V -
+07 V N
+08 V N
+09 V N
+
+06-suppression
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/06-suppression.nes -f 700 -a 3 -r 4 -q -j /tmp/nessys_39fet466.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,192,1.055,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_ohidovfa.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,192,0.951,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_m4yht6ub.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,192,0.788,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_79n23nej.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,192,0.81,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_qflaopdf.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,192,0.984,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_nghqcdoj.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,192,0.754,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_otqlnzwd.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,192,0.631,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_hthsqnas.json
+ppu_vbl_nmi/rom_singles/07-nmi_on_timing,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,192,0.783,"00 N
+01 N
+02 N
+03 N
+04 N
+05 -
+06 -
+07 -
+08 -
+
+07-nmi_on_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/07-nmi_on_timing.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_7datwwwg.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,216,0.915,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 0 -r 0 -q -j /tmp/nessys_yh45doe7.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,216,1.103,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 0 -r 4 -q -j /tmp/nessys_brgwnhfz.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,216,0.904,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 1 -r 0 -q -j /tmp/nessys_n7xupfsm.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,216,0.882,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 1 -r 4 -q -j /tmp/nessys_m0v7sknw.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,216,0.821,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 2 -r 0 -q -j /tmp/nessys_iadi0yuu.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,216,0.985,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 2 -r 4 -q -j /tmp/nessys_bwc_sagd.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,216,0.901,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 3 -r 0 -q -j /tmp/nessys_ltsqrwwc.json
+ppu_vbl_nmi/rom_singles/08-nmi_off_timing,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,216,0.944,"03 -
+04 -
+05 -
+06 -
+07 N
+08 N
+09 N
+0A N
+0B N
+0C N
+
+08-nmi_off_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/08-nmi_off_timing.nes -f 700 -a 3 -r 4 -q -j /tmp/nessys_3skq9548.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,73,0.376,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_346lfi_w.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,73,0.383,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_cqs9zk19.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,73,0.236,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_9j6tqjxz.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,73,0.295,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_xcuh6o64.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,73,0.372,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_dhohx07w.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,73,0.42,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_yf0dznqr.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,73,0.381,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys_vf16rose.json
+ppu_vbl_nmi/rom_singles/09-even_odd_frames,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,73,0.37,"00 01 01 02 
+09-even_odd_frames
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/09-even_odd_frames.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_gki665m5.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,0,0,PASS,0,status $00,0,146,0.695,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 0 -r 0 -q -j /tmp/nessys_yojnei0e.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,0,4,PASS,0,status $00,0,146,0.577,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 0 -r 4 -q -j /tmp/nessys_bkhkvfy7.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,1,0,PASS,0,status $00,0,146,0.556,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 1 -r 0 -q -j /tmp/nessys_7albk5yk.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,1,4,PASS,0,status $00,0,146,0.671,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 1 -r 4 -q -j /tmp/nessys_g6srvnre.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,2,0,PASS,0,status $00,0,146,0.711,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 2 -r 0 -q -j /tmp/nessys_nlwiltr2.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,2,4,PASS,0,status $00,0,146,0.691,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 2 -r 4 -q -j /tmp/nessys_36w5u3sj.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,3,0,PASS,0,status $00,0,146,0.709,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 3 -r 0 -q -j /tmp/nessys__8mf04ef.json
+ppu_vbl_nmi/rom_singles/10-even_odd_timing,ppu_vbl_nmi,PPU,3,4,PASS,0,status $00,0,146,0.759,"08 08 09 07 
+10-even_odd_timing
+
+Passed
+",/home/claude/nessysinteger/nessys_cli /home/claude/christopherpow/nes-test-roms/ppu_vbl_nmi/rom_singles/10-even_odd_timing.nes -f 600 -a 3 -r 4 -q -j /tmp/nessys_fhpc1ivy.json

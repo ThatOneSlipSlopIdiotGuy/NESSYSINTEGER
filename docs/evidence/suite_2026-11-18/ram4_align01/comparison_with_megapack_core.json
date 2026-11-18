@@ -1,0 +1,292 @@
+{
+ "error": null,
+ "rows": [
+  {
+   "test": "nes-test-roms/instr_test-v5/all_instrs.nes",
+   "original": "FAIL",
+   "original_excerpt": "result $80: Running test 10 of 16",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/official_only.nes",
+   "original": "FAIL",
+   "original_excerpt": "result $80: Running test 16 of 16",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/01-basics.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n01-basics\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/02-implied.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n02-implied\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/03-immediate.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n03-immediate\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/04-zero_page.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n04-zero_page\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/05-zp_xy.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n05-zp_xy\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/06-absolute.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n06-absolute\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/07-abs_xy.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n07-abs_xy\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/08-ind_x.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n08-ind_x\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/09-ind_y.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n09-ind_y\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/10-branches.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n10-branches\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/11-stack.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n11-stack\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/12-jmp_jsr.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n12-jmp_jsr\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/13-rts.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n13-rts\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/14-rti.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n14-rti\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/15-brk.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n15-brk\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_test-v5/rom_singles/16-special.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n16-special\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_timing/instr_timing.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n2-branch_timing\n\nPassed\nAll 2 tests passed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_timing/rom_singles/1-instr_timing.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: Instruction timing test\n\nTakes about 25 seconds. Doesn't time the 8 ",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/instr_timing/rom_singles/2-branch_timing.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n2-branch_timing\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/cpu_interrupts.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: test_jmp\nT+ CK PC\n00 02 04 \n01 01 04 \n02 03 07 \n03 02 07 \n04 01 07 \n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/rom_singles/1-cli_latency.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n1-cli_latency\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/rom_singles/2-nmi_and_brk.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: NMI BRK 00\n27  36  00 \n26  36  00 \n26  36  00 \n36  00  00 \n36  00  0",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/rom_singles/3-nmi_and_irq.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: NMI BRK\n23  00 \n21  00 \n21  00 \n20  00 \n20  00 \n20  00 \n20  00 \n20  ",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/rom_singles/4-irq_and_dma.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: 0 +0\n1 +1\n1 +2\n2 +3\n2 +4\n4 +5\n4 +6\n7 +7\n7 +8\n7 +9\n7 +10\n8 +11\n8 +12\n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_interrupts_v2/rom_singles/5-branch_delays_irq.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: test_jmp\nT+ CK PC\n00 02 04 \n01 01 04 \n02 03 07 \n03 02 07 \n04 01 07 \n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_reset/ram_after_reset.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \nram_after_reset\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_reset/registers.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: A  X  Y  P  S\n34 56 78 FF 0F \n\nregisters\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_dummy_writes/cpu_dummy_writes_oam.nes",
+   "original": "PASS",
+   "original_excerpt": "test can be\nused to see if the CPU in the\nemulator is built properly.\n\n\u001b[0;37m\u001b[",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/cpu_dummy_writes/cpu_dummy_writes_ppumem.nes",
+   "original": "PASS",
+   "original_excerpt": "- 0\u001b[1;34m- 0\u001b[1;34m0\u001b[1;34m\n\u001b[0;33m  R6:\u001b[1;34m 0\u001b[1;34m- 0\u001b[1;34m- 0\u001b[1;34m0\u001b[",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/4015_cleared.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \n4015_cleared\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/4017_timing.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: Delay after effective $4017 write: 8\n\n4017_timing\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/4017_written.nes",
+   "original": "FAIL",
+   "original_excerpt": "result $03: \nAt reset, $4017 should should be rewritten with last value written\n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/irq_flag_cleared.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \nirq_flag_cleared\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/len_ctrs_enabled.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \nlen_ctrs_enabled\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/apu_reset/works_immediately.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \nworks_immediately\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/ppu_open_bus/ppu_open_bus.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: \nppu_open_bus\n\nPassed",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/oam_read/oam_read.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: ----------------\n----------------\n----------------\n----------------\n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "nes-test-roms/oam_stress/oam_stress.nes",
+   "original": "PASS",
+   "original_excerpt": "result $00: ----------------\n----------------\n----------------\n----------------\n",
+   "now": "PASS",
+   "detail": "status $00"
+  },
+  {
+   "test": "AccuracyCoin/AccuracyCoin.nes",
+   "original": "PASS",
+   "original_excerpt": "Pass        INC $4014\n  Pass        Rendering Flag Behavior\n  Pass        $2007 ",
+   "now": "PASS",
+   "detail": "147/147"
+  }
+ ]
+}

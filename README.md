@@ -15,7 +15,7 @@ NESSYSINTEGER runs NES and Famicom games one clock at a time, the way the hardwa
 - **Realistic power-on state:** your emulated console has its own memory fingerprint.
 - **Tools:** PPU viewer, debugger and memory editor, Game Genie and RAM-freeze cheats, save states, and a headless command-line runner.
 
-Version **0.7.2**. The emulator runs on Windows. The command-line tools and test suites also build on Linux and macOS.
+Version **0.7.3**. The emulator runs on Windows. The command-line tools and test suites also build on Linux and macOS.
 
 NESSYSINTEGER doesn't include any games. It loads `.nes` files in iNES and NES 2.0 format.
 
@@ -43,7 +43,7 @@ That builds five programs:
 | `nessys_cli.exe` | Headless runner for screenshots, audio capture, traces, scripted input and cartridge experiments |
 | `accuracycoin_run.exe` | Runs the AccuracyCoin test ROM headlessly and prints every result |
 | `mapper_test.exe` | Mapper and cartridge regression suite (773 checks) |
-| `dma_trace.exe` | DMA and APU timing checks (30 checks) |
+| `dma_trace.exe` | DMA, APU and reset timing checks (34 checks) |
 
 On Linux or macOS, `make` builds the four command-line programs (not the Windows front end), and `make test` runs the self-tests.
 
@@ -125,7 +125,11 @@ OAM DMA and DMC (sample) DMA follow the get/put cycle cadence documented on the 
 ### APU and sound
 
 - **Channels:** two pulse channels, triangle, noise and DMC, with their real timers, length counters, envelopes, sweeps and frame counter, including the frame IRQ's timing quirks.
-- **Mixing:** the channels go through the 2A03's non-linear mixing, then the NES's output filters (90 Hz and 440 Hz high-pass, 14 kHz low-pass). Output is 44.1 kHz.
+- **Mixing:** the channels go through the 2A03's non-linear mixing, computed with the NESdev Wiki's formula rather than its 3:2:1 lookup-table shortcut.
+  - The real weights put a triangle step at 2.75 DMC steps, which is what blargg's `apu_mixer` tests cancel against.
+  - After mixing come the NES's output filters (90 Hz and 440 Hz high-pass, 14 kHz low-pass). Output is 44.1 kHz.
+- **Reset:** RESET silences every channel (`$4015` = 0) and holds the frame counter still for as long as the button is down.
+  - On release, the frame counter restarts as if the last `$4017` value were written again, 9 or 10 cycles before the first instruction depending on the APU's even/odd phase. That matches blargg's measured "9 to 12 clocks".
 - **Cartridge sound chips:** mixed in the way a real console mixes them (see [Boards (mappers)](#boards-mappers)).
 
 ### Colour
@@ -351,12 +355,24 @@ nessys_cli rom.nes [options]
   -t S,R,P,D         cartridge pose: inserted, tilt, lean, dust (e.g. -t 1,0.3,0,0)
   -F real|high|low|noise|hold  what open inputs read as (default real)
   -a N               CPU/PPU clock alignment 0-3
+  -r N               power-on RAM: 0 zeros, 1 $FF, 2 random, 3 stripes, 4 like a real console (default)
   -m ADDR:LEN        dump CPU memory at the end (e.g. 0300:16)
   -g CODE            Game Genie code (repeatable)
+  -j result.json     write the result as JSON
   -q                 print only the result line
 ```
 
-The exit code is 0 when a test ROM reports success through the `$6000` result protocol, which the self-test ROMs use. Some examples:
+**The `$6000` result protocol.** Test ROMs that use blargg's protocol (and the self-test ROMs) report through it:
+
+- **What the ROM writes:**
+  - `$DE $B0 $61` to `$6001-$6003`;
+  - its status to `$6000`: `$80` running, `$81` "press RESET", `$00` passed, `$01-$7F` failed;
+  - text from `$6004`.
+- **When a ROM asks for RESET:** `nessys_cli` presses the console's RESET button once for each new request, 250 ms later. It holds the button for 4 frames, through the same path as *Console › Reset*.
+- **The exit code:** 0 passed, 1 failed, 2 usage or load error, 3 still running when the frames ran out, 4 waiting for RESET, 5 no `$6000` signature, 6 a status the protocol doesn't define.
+- **The `-j` report** has the status, the text, every RESET (requested, pressed and released, in frames and CPU cycles), the frame and cycle counts and the cartridge contacts' state.
+
+Some examples:
 
 ```
 nessys_cli game.nes -p 26=off -F low -f 300 -s glitch.ppm    lift PPU A3, screenshot the result
@@ -391,9 +407,34 @@ The exit code is 0 when every test passes.
   - each sound channel's pitch, measured by autocorrelation;
   - all twelve VRC2/VRC4 wirings, and the MMC5's scanline IRQ and extended attributes;
   - the console models, contact physics, the lockout chip, holding RESET, and save corruption at power-off.
-- **`dma_trace`** (30 checks) replays the NESdev Wiki's DMA examples cycle by cycle, plus AccuracyCoin's documented DMC, register-conflict, frame-IRQ and controller-strobe rules.
+- **`dma_trace`** (34 checks) replays the NESdev Wiki's DMA examples cycle by cycle, plus AccuracyCoin's documented DMC, register-conflict, frame-IRQ and controller-strobe rules. It also checks what the RESET line does to the APU.
 
 `make test` builds everything and runs the self-test ROMs, `dma_trace` and `mapper_test`.
+
+### The test-ROM suite (`tests/suite`)
+
+`run_suite.py` runs NESSYSINTEGER against a pinned list of public test ROMs and gives every case a verdict that can be checked. It needs only Python 3.8 or newer. On Windows, `tests\suite\run_suite.bat` finds Python for you: `py -3`, then `python`, or the `NESSYS_PYTHON` variable.
+
+**What it checks:**
+
+- **Pinned ROMs:** `manifest.json` names each ROM's source commit, SHA-256, protocol and frame budget.
+- **The test ROMs themselves:** these aren't included. Clone [nes-test-roms](https://github.com/christopherpow/nes-test-roms) and [AccuracyCoin](https://github.com/100thCoin/AccuracyCoin) at the commits in the manifest.
+
+```
+python tests/suite/run_suite.py --roms nes-test-roms=C:/src/nes-test-roms --roms AccuracyCoin=C:/src/AccuracyCoin
+python tests/suite/run_suite.py ... --align 0,1,2,3 --ram 0,4 --only apu_reset      (a matrix, one suite)
+python tests/suite/run_suite.py ... --dry-run                                        (check the ROMs and hashes only)
+```
+
+**How verdicts are decided:**
+
+- A verdict comes from the ROM's own status byte in the emulator's JSON report, never from the exit code or the printed text alone.
+- The exit code, the report and the frame and cycle counts must agree, or the case is a harness error.
+- A ROM still running when its frames run out is `INCOMPLETE_EMULATED_BUDGET`, not a failure.
+- A ROM whose SHA-256 differs from the manifest's is `WRONG_REVISION`.
+- Tests that need ears or eyes are `UNVERIFIED_MANUAL`.
+
+The results go to `results.md`, `results.csv` and `results.json`. The runner's own tests run with `python -m unittest discover -s tests/suite`.
 
 ---
 
@@ -402,9 +443,10 @@ The exit code is 0 when every test passes.
 | Test | Result |
 |---|---|
 | [AccuracyCoin](https://github.com/100thCoin/AccuracyCoin) | **147 / 147** (the 13 November 2026 version) at all four CPU/PPU clock alignments and with every power-on RAM pattern. The earlier 144-test version also passes |
+| [nes-test-roms](https://github.com/christopherpow/nes-test-roms) battery (`tests/suite`, 125 pinned ROMs) | Every ROM with a machine-readable verdict passes at all four alignments. That covers 119 ROMs: blargg's CPU, PPU, APU, reset, DMA and MMC3 suites, including the 2005 APU frame-counter tests. The 4 `apu_mixer` ROMs need listening (`UNVERIFIED_MANUAL`). 2 MMC3 ROMs were made for the MMC3A and MMC6 (`REVISION_DEPENDENT`). Details in [docs/ACCURACY_TEST_LEDGER.md](docs/ACCURACY_TEST_LEDGER.md) |
 | Self-test ROMs (`tests/roms`) | All 18 hardware checks pass at all four alignments; the MMC1 and MMC3 tests pass |
 | `mapper_test` | 773 checks, 0 failures |
-| `dma_trace` | 30 checks, 0 mismatches |
+| `dma_trace` | 34 checks, 0 mismatches |
 
 During development, the CPU was also fuzzed against an independent 6502 model, matching registers, flags, memory and cycle counts on every opcode.
 
@@ -423,7 +465,10 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 ### Known issues
 
 - MMC1 boards with 16 KB of save RAM (SOROM, used by games such as Nobunaga's Ambition) select the wrong save-RAM bank.
-- Every MMC3 behaves like the MMC3B/C. The MMC3A's older IRQ behaviour (NES 2.0 submapper 4) isn't modelled yet.
+- Every MMC3 behaves like the MMC3B/C. The MMC3A's older IRQ behaviour (NES 2.0 submapper 4) isn't modelled yet. An MMC6 is only recognised from a NES 2.0 header (submapper 1).
+- The MMC3's PRG-RAM register (`$A001`) starts out enabled. Its real power-on value isn't documented anywhere we could find.
+- blargg's `4017_timing` reads 9 or 10 on NESSYSINTEGER. Real consoles read 9 to 12, and where the 11 and 12 come from is unknown.
+- blargg's `apu_mixer` tests can't judge themselves: they need someone to listen for near-silence. NESSYSINTEGER's measured leftovers are in the test ledger.
 - The Famicom Disk System (mapper 20) isn't emulated yet.
 - PAL and Dendy timing, the Zapper and other peripherals aren't emulated.
 - The FM, PSG and wavetable sound chips follow their documented behaviour, but haven't been compared with recordings of real hardware.
@@ -497,6 +542,9 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 | `win/main.c` | Windows front end (Win32, GDI, waveOut) |
 | `tools/nessys_cli.c`, `tools/accuracycoin_run.c` | Command-line tools |
 | `tests/mapper_test.c`, `tests/dma_trace.c` | Regression suites |
+| `tests/suite/` | The pinned test-ROM suite: `run_suite.py`, `manifest.json`, the runner's unit tests and `run_suite.bat` |
+| `docs/CLAUDE_PROJECT_HANDOFF.md` | Where development stands and what to do next |
+| `docs/ACCURACY_*.md`, `docs/MEGAPACK_ERRATA.md`, `docs/evidence/` | Sources, the test ledger, the roadmap, and the corrected MegaPack results |
 | `tests/roms/` | Self-test ROMs, built by `tests/make_test_roms.py` with the small 6502 assembler in `tests/asm6502.py` |
 | `scoop/`, `package.ps1` | Release packaging; see [docs/RELEASING.md](docs/RELEASING.md) |
 

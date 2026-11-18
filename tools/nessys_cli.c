@@ -15,8 +15,18 @@
  *     -a N            CPU/PPU clock alignment 0..3
  *     -m 0300:16      dump CPU memory (hex address : byte count) at the end
  *     -g CODE         Game Genie code (repeatable)
+ *     -r N            power-on RAM: 0 zeros, 1 $FF, 2 random, 3 stripes, 4 like a real console (default)
+ *     -j result.json  write the result as JSON (status, text, resets, frames, cycles, connector state,
+ *                     and the -m bytes)
  *     -q              quiet (only the result line)
- * Exit code: 0 if the ROM reports success through the $6000 protocol. */
+ *
+ * Test ROMs that use blargg's $6000 protocol write $DE $B0 $61 to $6001-$6003, their status to
+ * $6000 ($80 running, $81 "press RESET at least 100 ms from now", $00 passed, $01-$7F failed) and
+ * text from $6004. A new $81 gets one press of the console's RESET button 15 frames (250 ms) later,
+ * through the same held-button path as the Windows program; the button is held 4 frames.
+ * Exit code: 0 passed, 1 failed, 2 usage or load error, 3 still running when the frames ran out,
+ * 4 waiting for a RESET when the frames ran out, 5 no $6000 signature (not a test ROM, or it never
+ * started), 6 a status byte the protocol doesn't define. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,6 +57,20 @@ static void trace_cb(Nes *n, char k, uint16_t a, uint8_t v) {
     fprintf(tf, "f%-4d L%-3d d%-3d %s\n", cur_frame, p->scanline, p->dot, line);
 }
 
+/* JSON string: quotes, backslashes and control characters (some tests print ANSI colour codes) */
+static void json_str(FILE *o, const char *s) {
+    fputc('"', o);
+    for (; *s; s++) {
+        unsigned char c = (unsigned char)*s;
+        if (c == '"' || c == '\\') { fputc('\\', o); fputc(c, o); }
+        else if (c == '\n') fputs("\\n", o);
+        else if (c < 0x20 || c >= 0x7F) fprintf(o, "\\u%04x", c);
+        else fputc(c, o);
+    }
+    fputc('"', o);
+}
+typedef struct { int requested_frame, pressed_frame, released_frame; uint64_t requested_cycle, released_cycle; } ResetEvent;
+
 static int pad_at(const char *sc, int f) {     /* "60-65:S;200:A" -> buttons held on frame f */
     int m = 0;
     while (sc && *sc) {
@@ -63,7 +87,7 @@ int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "usage: %s rom.nes [-f frames] [-s shot.ppm] [-w out.wav] [-i input-script] [-V view.ppm[:pal]]\n"
                         "       [-T trace.txt[:frames]] [-c auto|nes|nes101|fc] [-p pin=off|on|flaky|auto] [-t seat,roll,pitch,dirt]\n"
-                        "       [-F real|high|low|noise|hold] [-a 0-3] [-m addr:len] [-g code] [-q]\n", argv[0]);
+                        "       [-F real|high|low|noise|hold] [-a 0-3] [-r 0-4] [-m addr:len] [-g code] [-j result.json] [-q]\n", argv[0]);
         return 2;
     }
     FILE *f = fopen(argv[1], "rb");
@@ -74,7 +98,7 @@ int main(int argc, char **argv) {
     fclose(f);
     Nes *n = nes_create();
     int frames = 600, quiet = 0, dump_addr = -1, dump_len = 0;
-    const char *shot = NULL, *wav = NULL, *script = NULL, *view = NULL;
+    const char *shot = NULL, *wav = NULL, *script = NULL, *view = NULL, *json = NULL;
     for (int i = 2; i < argc; i++) {
         const char *a = argv[i], *v = i + 1 < argc ? argv[i + 1] : "";
         if (!strcmp(a, "-f")) { frames = atoi(v); i++; }
@@ -84,6 +108,8 @@ int main(int argc, char **argv) {
         else if (!strcmp(a, "-w")) { wav = v; i++; }
         else if (!strcmp(a, "-a")) { n->cpu_align = atoi(v) & 3; i++; }
         else if (!strcmp(a, "-q")) quiet = 1;
+        else if (!strcmp(a, "-r")) { int r = atoi(v); n->ram_init = (r >= 0 && r <= 4) ? r : 4; i++; }
+        else if (!strcmp(a, "-j")) { json = v; i++; }
         else if (!strcmp(a, "-c")) {                                       /* console model */
             n->console_setting = !strcmp(v, "nes") ? CON_NES : !strcmp(v, "nes101") ? CON_NES101 : (!strcmp(v, "fc") || !strcmp(v, "famicom")) ? CON_FAMICOM : CON_AUTO; i++;
         }
@@ -123,25 +149,77 @@ int main(int argc, char **argv) {
     FILE *wf = NULL; uint32_t nsamp = 0;
     if (wav && (wf = fopen(wav, "wb"))) { fwrite("RIFF\0\0\0\0WAVEfmt ", 1, 16, wf); put32(wf, 16); put16(wf, 1); put16(wf, 1);
         put32(wf, AUDIO_RATE); put32(wf, AUDIO_RATE * 2); put16(wf, 2); put16(wf, 16); fwrite("data\0\0\0\0", 1, 8, wf); }
-    int reset_at = -1, i;
+    int reset_at = -1, prev_status = -1, i, nev = 0, was_in_reset = 0;
+    ResetEvent ev[32];
     if (tf) { n->trace = trace_cb; fprintf(tf, "%s: mapper %d (%s), submapper %d, console %s\n", argv[1], n->mapper, nes_mapper_name(n->mapper), n->submapper, nes_console_name(n->console)); }
     for (i = 0; i < frames; i++) {
         cur_frame = i;
         n->pad[0] = (uint8_t)pad_at(script, i);
         nes_run_frame(n);
         if (wf) { fwrite(n->audio, 2, (size_t)n->audio_len, wf); nsamp += (uint32_t)n->audio_len; }
+        if (was_in_reset && !n->in_reset && nev) { ev[nev - 1].released_frame = i; ev[nev - 1].released_cycle = n->s.cpu.cycles; }
+        was_in_reset = n->in_reset;
         uint8_t *w = n->s.cart.wram;
         if (n->wram_size && w[1] == 0xDE && w[2] == 0xB0 && w[3] == 0x61) {
-            if (w[0] == 0x81 && reset_at < 0) reset_at = i + 15;   /* test asks for a reset */
-            if (reset_at == i) { nes_reset(n); reset_at = -2; }
-            if (w[0] < 0x80 && i > 10 && !shot && !wf) break;
+            /* A request is the status turning into $81. After the reset the test needs a few frames
+             * before it overwrites the old $81, and that must not count as a second request. */
+            if (w[0] == 0x81 && prev_status != 0x81 && reset_at < 0 && nev < 32) {
+                reset_at = i + 15;
+                ev[nev].requested_frame = i; ev[nev].requested_cycle = n->s.cpu.cycles;
+                ev[nev].pressed_frame = ev[nev].released_frame = -1; ev[nev].released_cycle = 0; nev++;
+            }
+            prev_status = w[0];
+            if (reset_at == i) {
+                n->reset_pulse = 4;                       /* press RESET for 4 frames, as the menu's Reset does */
+                ev[nev - 1].pressed_frame = i + 1; reset_at = -1;
+                if (!quiet) printf("frame %d: test asked for RESET at frame %d; pressing it\n", i, ev[nev - 1].requested_frame);
+            }
+            if (w[0] < 0x80 && i > 10 && !shot && !wf && reset_at < 0 && !n->in_reset && !n->reset_pulse) break;
         }
     }
     if (wf) { fseek(wf, 4, SEEK_SET); put32(wf, 36 + nsamp * 2); fseek(wf, 40, SEEK_SET); put32(wf, nsamp * 2); fclose(wf); }
     uint8_t *w = n->s.cart.wram;
     int ok = n->wram_size && w[1] == 0xDE && w[2] == 0xB0 && w[3] == 0x61;
-    if (ok) printf("result $%02X: %s\n", w[0], (char *)w + 4);
+    char text[2048] = "";
+    if (ok) { size_t k = 0; while (k + 4 < (size_t)n->wram_size && k < sizeof text - 1 && w[4 + k]) { text[k] = (char)w[4 + k]; k++; } text[k] = 0; }
+    const char *verdict = !ok ? "NO_SIGNATURE" : w[0] == 0x00 ? "PASS" : w[0] < 0x80 ? "FAIL" : w[0] == 0x80 ? "RUNNING" : w[0] == 0x81 ? "RESET_PENDING" : "UNKNOWN_STATUS";
+    int code = !ok ? 5 : w[0] == 0x00 ? 0 : w[0] < 0x80 ? 1 : w[0] == 0x80 ? 3 : w[0] == 0x81 ? 4 : 6;
+    if (ok) printf("result $%02X: %s\n", w[0], text);
     else printf("no $6000 result (frames=%d cycles=%llu pc=$%04X)\n", i, (unsigned long long)n->s.cpu.cycles, n->s.cpu.pc);
+    if (json) {
+        FILE *o = fopen(json, "w");
+        if (!o) perror(json);
+        else {
+            int open_pins = 0;
+            for (int p = 1; p <= n->conn.npins; p++) open_pins += conn_pin_signal(&n->conn, p) != S_NONE && !n->conn.conn[p];
+            static const char *FM[5] = { "high", "low", "noise", "hold", "real" };
+            fprintf(o, "{\n  \"tool\": \"nessys_cli\", \"version\": \"%s\",\n  \"rom\": ", NESSYS_VERSION); json_str(o, argv[1]);
+            fprintf(o, ", \"crc32\": \"%08X\", \"mapper\": %d, \"submapper\": %d,\n", n->rom_crc, n->mapper, n->submapper);
+            fprintf(o, "  \"console\": \"%s\", \"alignment\": %d, \"ram_mode\": %d, \"console_id\": %u,\n",
+                    nes_console_name(n->console), n->cpu_align, n->ram_init, n->console_id);
+            fprintf(o, "  \"frames_budget\": %d, \"frames_run\": %d, \"cpu_cycles\": %llu,\n", frames, i < frames ? i + 1 : frames,
+                    (unsigned long long)n->s.cpu.cycles);
+            fprintf(o, "  \"signature\": %s, \"status\": ", ok ? "true" : "false");
+            if (ok) fprintf(o, "%d", w[0]); else fprintf(o, "null");
+            fprintf(o, ", \"verdict\": \"%s\", \"exit_code\": %d,\n  \"text\": ", verdict, code); json_str(o, text);
+            fprintf(o, ",\n  \"resets\": [");
+            for (int k = 0; k < nev; k++)
+                fprintf(o, "%s\n    {\"requested_frame\": %d, \"requested_cycle\": %llu, \"pressed_frame\": %d, \"released_frame\": %d, \"released_cycle\": %llu}",
+                        k ? "," : "", ev[k].requested_frame, (unsigned long long)ev[k].requested_cycle, ev[k].pressed_frame,
+                        ev[k].released_frame, (unsigned long long)ev[k].released_cycle);
+            fprintf(o, "%s],\n", nev ? "\n  " : "");
+            fprintf(o, "  \"pc\": %u, \"jammed\": %s,\n", n->s.cpu.pc, n->s.cpu.jammed ? "true" : "false");
+            if (dump_addr >= 0) {                         /* -m: tests that report through a RAM byte */
+                fprintf(o, "  \"memory\": {\"addr\": %d, \"bytes\": [", dump_addr);
+                for (int k = 0; k < dump_len; k++) fprintf(o, "%s%u", k ? ", " : "", nes_peek(n, (uint16_t)(dump_addr + k)));
+                fprintf(o, "]},\n");
+            }
+            fprintf(o, "  \"connector\": {\"perfect\": %s, \"open_pins\": %d, \"flaky_pins\": %d, \"cart_power\": %s, \"cic_ok\": %s, \"lockout\": %s, \"open_inputs_read_as\": \"%s\"}\n}\n",
+                    n->conn.perfect ? "true" : "false", open_pins, n->conn.nflaky, n->conn.powered ? "true" : "false",
+                    n->conn.cic_ok ? "true" : "false", n->lock_dead ? "true" : "false", FM[n->conn.float_mode % 5]);
+            fclose(o);
+        }
+    }
     if (dump_addr >= 0) {
         for (int k = 0; k < dump_len; k++) printf("%s%02X", k % 16 ? " " : (k ? "\n" : ""), nes_peek(n, (uint16_t)(dump_addr + k)));
         printf("\n");
@@ -169,7 +247,6 @@ int main(int argc, char **argv) {
         }
         free(rgb);
     }
-    int code = (ok && w[0] == 0) ? 0 : 1;
     nes_destroy(n); free(d);
     if (tf) { tflush(); fclose(tf); }
     return code;

@@ -6,12 +6,12 @@
         ...then, in a SECOND terminal:   scoop install .\dist\nessysinteger.json
 
     Publish for real (so "scoop update" works):
-        .\package.ps1 -Version 0.7.2 -Repo yourname/NESSYSINTEGER
-        Upload dist\NESSYSINTEGER-0.7.2-win64.zip to a GitHub release tagged v0.7.2,
+        .\package.ps1 -Version 0.7.3 -Repo yourname/NESSYSINTEGER
+        Upload dist\NESSYSINTEGER-0.7.3-win64.zip to a GitHub release tagged v0.7.3,
         and put dist\nessysinteger.json in your Scoop bucket's bucket\ folder.
 #>
 param(
-    [string]$Version = "0.7.2",
+    [string]$Version = "0.7.3",
     [string]$Repo = "",
     [switch]$Local,
     [int]$Port = 8765
