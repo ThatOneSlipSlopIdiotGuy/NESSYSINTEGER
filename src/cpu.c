@@ -24,11 +24,16 @@ static void start_cycle(Nes *n, int rd) {
 
 /* real == 0 for cycles in which DMA holds the CPU halted: the 6502 core makes
  * no progress then, so its interrupt-poll pipeline does not advance (the NMI
- * edge detector itself still watches the line). */
+ * edge detector itself still watches the line).
+ * /IRQ is sampled at the same moment as /NMI: the 6502 polls both during phi2
+ * (NESdev "CPU interrupts"). Sampling it at the very end of the cycle instead made
+ * an MMC3 IRQ raised by a PPU A12 rise in the last clocks of a CPU cycle visible a
+ * cycle early at three of the four CPU/PPU alignments (mmc3_test_2 4-scanline_timing). */
 static void end_cycle(Nes *n, int rd, int real) {
     Cpu *c = &n->s.cpu;
     (void)rd;
     ppu_run_to(n, c->mclk + (NMI_PT - ACCESS_PT) - n->ppu_offset);
+    int irq = nes_irq_line(n);
     if (!c->prev_nmi_line && c->nmi_line) c->need_nmi = 1;
     c->prev_nmi_line = c->nmi_line;
     c->mclk += 12 - ACCESS_PT;
@@ -37,7 +42,7 @@ static void end_cycle(Nes *n, int rd, int real) {
     c->prev_need_nmi = c->nmi_s;
     c->nmi_s = c->need_nmi;
     c->prev_run_irq = c->run_irq;
-    c->run_irq = nes_irq_line(n) && !(c->p & FI);
+    c->run_irq = irq && !(c->p & FI);
 }
 #define TRACE(k, a, v) do { if (n->trace) n->trace(n, (k), (uint16_t)(a), (uint8_t)(v)); } while (0)
 
