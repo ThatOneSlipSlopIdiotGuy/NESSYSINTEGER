@@ -85,5 +85,9 @@ Every item needs evidence before it is called done.
 - **MMC3A IRQ:** submapper 4.
 - **MMC6 on iNES 1.0 headers:** can't be detected.
 - **SOROM save-RAM banking.**
-- **About 30 more boards:** see the README's roadmap, plus mapper 28 (Action 53; `other/Streemerz_bundle.nes` in nes-test-roms is one).
+- **More boards, in the order the owner's collection needs them:** `tools/mapper_census.py` on 5,827 dumps (2026-11-22) puts them at 30 (367 dumps), 176 (96), 268 (81), 163 (71), 224 (39), 28 (35), 178 (33), 150 (20), 90 (18) and 148 (18).
+  - The top 10 would take coverage from 75.5% to 88.9%; the top 50 to about 95%.
+  - The earlier list of about 30 boards is in the README's roadmap.
+  - NESdev marks 224 as a number assigned by mistake, so check what those dumps really are first.
+- **PAL timing:** 457 of the same dumps are marked PAL, so this is worth more than most single boards.
 - **Board-level contact physics research:** only after this list.

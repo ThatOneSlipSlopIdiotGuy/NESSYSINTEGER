@@ -113,6 +113,13 @@ def _crashed(rc):
     return rc is not None and (rc < 0 or rc >= 0xC0000000 or rc in (134, 136, 139))
 
 
+def _contacts_ideal(conn):
+    """The emulator's fast-path flag ("perfect") covers the bus, power and control contacts. The
+    lockout chip's and the expansion contacts aren't part of it, so the open and flaky counts,
+    which cover every contact that carries a signal, must be zero too."""
+    return bool(conn.get("perfect", False)) and conn.get("open_pins", 0) == 0 and conn.get("flaky_pins", 0) == 0
+
+
 def classify_blargg6000(case, proc, report):
     """proc: {"rc", "timed_out", "error", "stdout", "stderr"}; report: the CLI's parsed JSON, or None,
     or {"_invalid": "message"} when the file existed but wasn't valid JSON."""
@@ -148,7 +155,7 @@ def classify_blargg6000(case, proc, report):
     if fr >= 10 and not (CYCLES_PER_FRAME[0] * fr <= cyc <= CYCLES_PER_FRAME[1] * (fr + 1)):
         return _verdict("HARNESS_ERROR", "%s CPU cycles is not %s NTSC frames" % (cyc, fr))
     conn = report["connector"]
-    if not conn.get("perfect", False):
+    if not _contacts_ideal(conn):
         return _verdict("HARNESS_ERROR", "cartridge contacts were not ideal: %s" % json.dumps(conn))
     resets = report["resets"]
     extra = {"status": st, "frames_run": fr, "resets": len(resets), "text": report.get("text", "")}
@@ -188,7 +195,7 @@ def classify_zp_result(case, proc, report):
         return _verdict("HARNESS_ERROR", "exit code %s but the report says %s" % (rc, report.get("exit_code")))
     if report.get("frames_run") != case.get("frames"):
         return _verdict("HARNESS_ERROR", "ran %s frames, the manifest says %s" % (report.get("frames_run"), case.get("frames")))
-    if not report.get("connector", {}).get("perfect", False):
+    if not _contacts_ideal(report.get("connector", {})):
         return _verdict("HARNESS_ERROR", "cartridge contacts were not ideal")
     mem = report["memory"]
     addr = int(case["result_addr"], 16)

@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.15)
 project(NESSYSINTEGER C)
 set(CMAKE_C_STANDARD 99)
+# MSVC: link the C runtime statically, so the programs need no Visual C++ runtime DLLs
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 set(CORE src/cpu.c src/ppu.c src/apu.c src/cart.c src/nes.c src/boards.c src/boards_konami.c src/boards_misc.c src/boards_mmc5.c src/ppuview.c)
 if(MSVC)
   add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
