@@ -15,7 +15,7 @@ NESSYSINTEGER runs NES and Famicom games one clock at a time, the way the hardwa
 - **Realistic power-on state:** your emulated console has its own memory fingerprint.
 - **Tools:** PPU viewer, debugger and memory editor, Game Genie and RAM-freeze cheats, save states, and a headless command-line runner.
 
-Version **0.7.3**. The emulator runs on Windows. The command-line tools and test suites also build on Linux and macOS.
+Version **0.7.3**. The emulator runs on Windows. The command-line tools and test suites also build on Linux. [Platforms](#platforms) says which systems have actually been tried.
 
 NESSYSINTEGER doesn't include any games. It loads `.nes` files in iNES and NES 2.0 format.
 
@@ -25,7 +25,12 @@ NESSYSINTEGER doesn't include any games. It loads `.nes` files in iNES and NES 2
 
 ### Building
 
-NESSYSINTEGER is plain C99 and uses only what ships with Windows, so there are no DLLs to carry around. Any of these toolchains works:
+NESSYSINTEGER is plain C99. Apart from Windows' own system libraries it needs only a C runtime, and there are no DLLs to carry around:
+
+- **Visual Studio builds** link the C runtime into the programs (`/MT` in `build.bat`; the same setting in `CMakeLists.txt`).
+- **MinGW builds** use the C runtime that comes with Windows 10 and 11.
+
+Any of these toolchains works:
 
 | Toolchain | How |
 |---|---|
@@ -33,7 +38,7 @@ NESSYSINTEGER is plain C99 and uses only what ships with Windows, so there are n
 | **Visual Studio 2019/2022** or **Build Tools for Visual Studio** (*Desktop development with C++*) | Open the **x64 Native Tools Command Prompt for VS** in this folder and run `build.bat` |
 | **w64devkit** (portable) | Run `w64devkit.exe`, `cd` into this folder and run `make` |
 | **MSYS2** | `pacman -S mingw-w64-ucrt-x86_64-gcc make`, then run `make` in the UCRT64 shell |
-| **CMake** | In Visual Studio, *File › Open › Folder…* picks up `CMakeLists.txt` |
+| **CMake** (3.15 or newer) | In Visual Studio, *File › Open › Folder…* picks up `CMakeLists.txt` |
 
 That builds five programs:
 
@@ -47,9 +52,31 @@ That builds five programs:
 
 On Linux or macOS, `make` builds the four command-line programs (not the Windows front end), and `make test` runs the self-tests.
 
+### Platforms
+
+| System | Status |
+|---|---|
+| Windows 10 | The play tester's system; the emulator has been played there |
+| Windows 11 | Expected to work like Windows 10; no report yet |
+| Windows 7, 8 and 8.1 | Untested. The program only uses Windows features from the XP era, but a MinGW build may need Microsoft's Universal C Runtime update on these versions; the Visual Studio build doesn't |
+| Windows XP and Vista | Untested. A build would need an older MinGW that uses the old `msvcrt` runtime |
+| Linux (x86-64, gcc) | The command-line tools, `make test` and the test-ROM suite build and run |
+| macOS | The command-line tools should build with `make`; nobody has tried yet |
+
+Version 0.7.3's changes were tested on Linux. If you build 0.7.3 on Windows, run the self-test below first: it should still say **ALL TESTS PASSED**.
+
 ### First run
 
 Open `tests/roms/selftest.nes` with *File › Open* or Ctrl+O, or drag it onto the window. It runs 18 hardware-behaviour checks and should finish on **ALL TESTS PASSED**. Then load a game, press **F9**, and start handling the cartridge.
+
+**Out of the box, the console and the cartridges are used ones.**
+
+- *Cartridge › Wear and dirt* is on by default. Your console gets a typically worn connector, and every cartridge gets its own grime.
+- Most games work straight away. Simulating 100,000 default console-and-cartridge pairs, about 1 in 250 started with an intermittent contact, which can glitch until you reseat, blow on or clean the cartridge, as with a real one.
+- Every push of the front-loader's tray wears the springs a little more.
+- For ideal contacts, untick *Wear and dirt*. All the accuracy results in this README use ideal contacts.
+
+The picture starts with the TV's 8:7 pixel shape and the top and bottom 8 lines cropped, like a TV's overscan. Both can be switched off in the *Video* menu.
 
 ### Controls
 
@@ -61,7 +88,7 @@ Open `tests/roms/selftest.nes` with *File › Open* or Ctrl+O, or drag it onto t
 | Start | Enter | Y |
 | Select | Right Shift | T |
 
-Xbox-style gamepads work too: pad 1 is player 1 and pad 2 is player 2. The pad's A and X buttons are the NES **B** button, and B and Y are **A**. Every key can be remapped in the `[Keys]` section of `nessysinteger.ini`, using Windows virtual-key codes (A–Z = 65–90, 0–9 = 48–57, Enter = 13, Space = 32, Left/Up/Right/Down = 37/38/39/40, Left/Right Shift = 160/161).
+Xbox-style (XInput) gamepads work too: pad 1 is player 1 and pad 2 is player 2. The pad's A and X buttons are the NES **B** button, B and Y are **A**, Back is Select, and the D-pad or the left stick steers. Every key can be remapped in the `[Keys]` section of `nessysinteger.ini`, using Windows virtual-key codes (A–Z = 65–90, 0–9 = 48–57, Enter = 13, Space = 32, Left/Up/Right/Down = 37/38/39/40, Left/Right Shift = 160/161).
 
 | Key | Action |
 |---|---|
@@ -99,6 +126,7 @@ Everything runs from the NTSC master clock of 21.477 MHz. A CPU cycle is 12 mast
 - Every CPU cycle is a real bus access, including the dummy reads and writes that software can observe.
 - All 256 opcodes are implemented, the unofficial ones included. The JAM opcodes lock the CPU up.
 - Within each 12-clock cycle, the bus access lands 5 clocks in and the NMI edge detector samples the /NMI line 9 clocks in. Those two values were calibrated on AccuracyCoin: they are the only ones with which every VBlank, NMI and rendering-toggle test passes at all four alignments.
+- The /IRQ line is sampled at the same moment as /NMI, because the 6502 polls both during the second half of the cycle (NESdev Wiki, "CPU interrupts"). That keeps MMC3 interrupts on the right cycle at all four alignments.
 - Interrupts are polled on the second-to-last cycle of each instruction. Cycles where DMA has halted the CPU don't advance the polling.
 - The 2A03's internal data bus is modelled separately from the cartridge-side pins. Open-bus reads, `$4015` reads and DMA register conflicts behave as they do on hardware.
 - SHA, SHX, SHY and SHS corrupt their target address the way the real chip does, including when DMA interferes.
@@ -136,11 +164,13 @@ OAM DMA and DMC (sample) DMA follow the get/put cycle cadence documented on the 
 
 The palette isn't a fixed table of RGB values. It's generated by modelling the 2C02's composite video signal and decoding it the way an ideal NTSC TV would. The model is a square wave between two voltage levels, with 12 phases per colour cycle and emphasis attenuation. That covers all 64 colours with all 8 emphasis combinations.
 
+The voltage levels are the ones published on the NESdev Wiki. The decoder is an idealised TV with no hue, saturation or sharpness settings. The result hasn't been compared with captures of real consoles, and real TVs differ from one another.
+
 ### Power-on state
 
 Real NES memory doesn't power up empty. By default (*Console › Power-on RAM contents › Like a real console*), your emulated console gets its own power-up fingerprint for CPU RAM, nametable RAM, palette RAM and OAM.
 
-- Like real SRAM, the fingerprint is mostly the same at every power-on, with a few unstable bits that change each time.
+- Like real SRAM, the fingerprint is mostly the same at every power-on, with a few unstable bits that change each time. This is a model of how SRAM cells settle, not a dump of any particular console: how many cells settle against the pattern, and how many are unstable, are illustrative choices.
 - The palette's starting contents are based on blargg's dump from a real NTSC PPU.
 - Cartridge work RAM and CHR-RAM get the cartridge's own pattern.
 - *Swap in a different console* gives you a new fingerprint. Plain `$00`, `$FF`, random and striped patterns are also available.
@@ -164,7 +194,20 @@ Every CPU and PPU bus access, every mapper write, the IRQ line, the lockout chip
 - **Oxidation and grime,** on the connector's pins and on the cartridge's own contacts.
 - **Loose dust and breath moisture.**
 
-From those, each contact is solid, intermittent or open. An intermittent contact is decided again on every single bus access, so the glitches look like the real thing. When a contact is open, the cartridge sees a floating input. What a floating input reads depends on its electrical behaviour, which you can choose under *Cartridge › Open pins read as*:
+From those, each contact is solid, intermittent or open. An intermittent contact is decided again on every single bus access, so the glitches look like the real thing.
+
+**What's documented and what's modelled:**
+
+- **From documentation:** which signal each contact carries and what the console sees on an open line. These follow the NESdev Wiki's connector pinouts and bus descriptions.
+- **A simplified model, tuned to behave plausibly:**
+  - spring forces and how they wear;
+  - oxidation, dust and breath moisture;
+  - how far a tilt lifts a contact;
+  - what a floating input reads in the *Realistic* mode below.
+
+  None of these numbers were measured on real connectors.
+
+When a contact is open, the cartridge sees a floating input. What a floating input reads depends on its electrical behaviour, which you can choose under *Cartridge › Open pins read as*:
 
 | Mode | An open input reads |
 |---|---|
@@ -223,7 +266,8 @@ The cartridge's key can be set to *Licensed*, *Other region*, *No key* or *Unlic
 #### RESET and power
 
 - **RESET (F1)** is a real button. While you hold it, the CPU stays in reset. On an NES-001 the reset line also holds the PPU, so the picture goes off. On a Famicom or NES-101 only the CPU and APU are held.
-- **Power (F2)** is a real switch. When the power goes off, the 5 V rail takes tens of milliseconds to collapse. On the way down, the CPU misreads bits and runs off into the weeds, while battery-backed save RAM still accepts writes. Switching off without holding RESET therefore occasionally corrupts a byte of a save, which is why game manuals told you to hold RESET while turning the power off.
+- **Power (F2)** is a real switch. When the power goes off, the 5 V rail takes tens of milliseconds to collapse; the model uses about 20 ms. On the way down, the CPU misreads bits and runs off into the weeds, while battery-backed save RAM still accepts writes. Switching off without holding RESET therefore occasionally corrupts a byte of a save, which is why game manuals told you to hold RESET while turning the power off.
+  - **The odds are a modelling choice:** about one unprotected power-off in 20 corrupts a byte, for a game that leaves its save RAM writable. They weren't measured.
 
 #### Hot-swapping
 
@@ -286,6 +330,7 @@ The panel treats the cartridge and the connector as physical parts. It never tak
 | Control | What it does |
 |---|---|
 | **Drag the cartridge** | Sideways tilts it; up and down pulls it out or pushes it in. Right-drag up and down leans it. |
+| **Sliders** | How far it's inserted, the tilt, the lean, and the loose dust, set precisely |
 | **Contact map** | Each contact shows its state: green is solid, yellow intermittent, red open, gold the power contacts, and a brown stain is oxidation. Hover a contact to see its signal, spring tension and oxidation. Click to force it open, flaky or closed; right-click puts it back to automatic. |
 | **Pull out / insert** | Animated, including the tray. With the power on, it's a hot unplug. |
 | **Tray down / release** | NES-001 only. |
@@ -293,7 +338,7 @@ The panel treats the cartridge and the connector as physical parts. It never tak
 | **Wiggle it** | A random nudge. |
 | **Reseat straight** | Back to perfectly seated. |
 | **All pins: auto** | Clears every contact you forced open, flaky or closed. |
-| **Blow on it** | Contact now, corrosion later. |
+| **Blow on it** | Contact now, corrosion later. Like cleaning, it takes the cartridge out and puts it back. |
 | **Clean cart** | Isopropyl alcohol on the cartridge's contacts. |
 | **Clean connector** | A cleaning kit through the console's connector. |
 | **Bend pins back** | Restores worn springs, unevenly. Power off only. |
@@ -333,7 +378,7 @@ How the pieces fit together:
 - **Debugger (F6):** CPU registers, PPU position, APU and mapper state, and a live disassembly. It steps by instruction, scanline or frame. Stepping mid-frame shows the half-drawn picture.
 - **Memory editor (in the debugger):** edit the CPU bus, the PPU bus, OAM, cartridge RAM or internal RAM. Click a byte and type hex. Writes at `$8000` and up on the CPU bus, and to CHR on the PPU bus, patch the loaded ROM image.
 - **Cheats (Tools menu):** Game Genie codes, 6 or 8 letters, and RAM freezes written as `0075:09`. They're saved per game.
-- **Video:** window size 1×–6×, 8:7 pixel aspect like a TV, overscan crop and fullscreen.
+- **Video:** window size 1×–6× (3× by default), 8:7 pixel aspect like a TV and overscan crop (both on by default), and fullscreen.
 
 ## Command-line tools
 
@@ -432,6 +477,7 @@ python tests/suite/run_suite.py ... --dry-run                                   
 - The exit code, the report and the frame and cycle counts must agree, or the case is a harness error.
 - A ROM still running when its frames run out is `INCOMPLETE_EMULATED_BUDGET`, not a failure.
 - A ROM whose SHA-256 differs from the manifest's is `WRONG_REVISION`.
+- The cartridge contacts must be ideal in every run (no open or flaky contact), or the case is a harness error. That way a failure always points at the emulator, never at the simulated connector.
 - Tests that need ears or eyes are `UNVERIFIED_MANUAL`.
 
 The results go to `results.md`, `results.csv` and `results.json`. The runner's own tests run with `python -m unittest discover -s tests/suite`.
@@ -439,6 +485,8 @@ The results go to `results.md`, `results.csv` and `results.json`. The runner's o
 ---
 
 ## Accuracy and testing
+
+Every result below was measured with ideal cartridge contacts and NTSC timing, on the Linux build of the command-line tools. They run the same emulator core as the Windows program.
 
 | Test | Result |
 |---|---|
@@ -448,7 +496,27 @@ The results go to `results.md`, `results.csv` and `results.json`. The runner's o
 | `mapper_test` | 773 checks, 0 failures |
 | `dma_trace` | 34 checks, 0 mismatches |
 
-During development, the CPU was also fuzzed against an independent 6502 model, matching registers, flags, memory and cycle counts on every opcode.
+In an earlier development session the CPU was also compared with an independent 6502 model by random testing (registers, flags, memory and cycle counts on every opcode). That test program isn't in this repository, so that result can't be re-run from it; the tests in the table can.
+
+### How much of the NES library runs
+
+**Measured by mapper number**, with `tools/mapper_census.py`, on the play tester's collection of 5,827 NES and Famicom cartridge dumps (November 2026):
+
+| | Cartridges |
+|---|---|
+| On a board NESSYSINTEGER emulates | 4,400 (75.5%) |
+| On one of 217 boards it doesn't have yet | 1,427 |
+| ...of which the ten most common boards cover | 778 (adding them would make it 88.9%) |
+| Marked PAL in their header (PAL timing isn't emulated) | 457 |
+
+**What the numbers mean:**
+
+- **Most licensed games are covered.** The six most common boards (mappers 0–4 and 7) account for 3,813 of the 5,827 dumps, and NESSYSINTEGER has them all.
+- **The missing boards are mostly not Nintendo-licensed.** According to the NESdev Wiki's mapper list, they're mainly homebrew boards (mappers 30 and 28), Chinese and Taiwanese unlicensed boards (Waixing, Nanjing, Sachen, J.Y. Company) and pirate multicarts.
+- **A supported board doesn't guarantee that every game on it works.** Only the games in the next table have been checked by hand.
+- **Some dumps carry a wrong mapper number in their header,** so the census is approximate.
+
+The census reads only the 16-byte header of each file. To run it on your own folder: `python tools/mapper_census.py "D:\your\ROMs"` (add `--csv list.csv` for one line per game).
 
 ### Games tested so far
 
@@ -470,7 +538,10 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 - blargg's `4017_timing` reads 9 or 10 on NESSYSINTEGER. Real consoles read 9 to 12, and where the 11 and 12 come from is unknown.
 - blargg's `apu_mixer` tests can't judge themselves: they need someone to listen for near-silence. NESSYSINTEGER's measured leftovers are in the test ledger.
 - The Famicom Disk System (mapper 20) isn't emulated yet.
-- PAL and Dendy timing, the Zapper and other peripherals aren't emulated.
+- PAL and Dendy timing isn't emulated. PAL games run with NTSC timing: too fast, at the wrong pitch, and some break.
+- Only standard controllers are emulated: no Zapper, Four Score, Famicom 4-player adapter, Power Pad, Arkanoid paddle or Famicom keyboard.
+- Input latency and frame pacing haven't been measured.
+- The colour palette and the analogue sound path haven't been compared with real consoles.
 - The FM, PSG and wavetable sound chips follow their documented behaviour, but haven't been compared with recordings of real hardware.
 - Dragging or resizing the window pauses emulation (normal Win32 behaviour).
 
@@ -518,11 +589,24 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 
 ## Roadmap
 
-- The Famicom Disk System (mapper 20), using your own `disksys.rom` BIOS dump.
-- MMC3A IRQ behaviour.
-- The SOROM save-RAM banking fix.
-- About 30 more boards: 15, 30 (UNROM 512), 37, 41, 46, 47, 48, 70, 72, 77, 86, 88, 89, 92, 93, 95, 97, 107, 113, the Sachen boards, 152, 154, 155, 184, 207, 228 (Action 52) and 232 (Camerica Quattro).
-- PAL and Dendy timing; the Zapper.
+- **More boards, the most-needed first** (by the census above):
+  - 30 (UNROM 512, homebrew);
+  - 176 and 178 (Waixing);
+  - 268 (an MMC3-based bootleg board);
+  - 163 (Nanjing);
+  - 224;
+  - 28 (Action 53, homebrew);
+  - 150 and 148 (Sachen);
+  - 90 (J.Y. Company).
+- **The boards on the earlier list:** 15, 37, 41, 46, 47, 48, 70, 72, 77, 86, 88, 89, 92, 93, 95, 97, 107, 113, 152, 154, 155, 184, 207, 228 (Action 52) and 232 (Camerica Quattro).
+- **MMC3A IRQ behaviour.**
+- **The SOROM save-RAM banking fix.**
+- **PAL and Dendy timing.**
+- **The Zapper and other controllers.**
+- **The Famicom Disk System** (mapper 20), using your own `disksys.rom` BIOS dump.
+- **Measured input latency and frame pacing.**
+
+The accuracy plan, with what each step needs as evidence, is in [docs/ACCURACY_ROADMAP.md](docs/ACCURACY_ROADMAP.md).
 
 ## Project layout
 
@@ -541,6 +625,7 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 | `src/ppuview.c` | PPU viewer renderer |
 | `win/main.c` | Windows front end (Win32, GDI, waveOut) |
 | `tools/nessys_cli.c`, `tools/accuracycoin_run.c` | Command-line tools |
+| `tools/mapper_census.py` | Lists the boards a folder of ROMs needs and which ones NESSYSINTEGER emulates (reads only the headers) |
 | `tests/mapper_test.c`, `tests/dma_trace.c` | Regression suites |
 | `tests/suite/` | The pinned test-ROM suite: `run_suite.py`, `manifest.json`, the runner's unit tests and `run_suite.bat` |
 | `docs/CLAUDE_PROJECT_HANDOFF.md` | Where development stands and what to do next |
@@ -549,6 +634,14 @@ During development, the CPU was also fuzzed against an independent 6502 model, m
 | `scoop/`, `package.ps1` | Release packaging; see [docs/RELEASING.md](docs/RELEASING.md) |
 
 ---
+
+## License
+
+NESSYSINTEGER is released under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+- **You may:** use, modify, fork and share it for any noncommercial purpose.
+- **You may not:** sell it or use it commercially without the copyright holder's permission.
+- **Copies and forks** must keep the license terms and the line in [NOTICE](NOTICE) that begins "Required Notice:".
 
 ## Credits
 
@@ -561,6 +654,7 @@ NESSYSINTEGER was built from public hardware documentation and test ROMs:
 
 - [NESdev Wiki](https://www.nesdev.org/wiki/): documentation of the CPU, PPU, APU, DMA, mappers, cartridge connector and lockout chip.
 - [AccuracyCoin](https://github.com/100thCoin/AccuracyCoin) by 100thCoin: the accuracy benchmark.
+- blargg's test ROMs, from the [nes-test-roms](https://github.com/christopherpow/nes-test-roms) collection: the CPU, PPU, APU, reset and MMC3 tests.
 - blargg's NTSC PPU research, including the power-up palette dump.
 - The VRC7's instrument ROM, dumped from the chip by Nuke.YKT.
 

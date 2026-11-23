@@ -14,11 +14,12 @@ echo   - w64devkit or MSYS2 (MinGW-w64): run build.bat or make from that shell
 exit /b 1
 :msvc
 echo Building with MSVC...
-cl /nologo /O2 /W3 /D_CRT_SECURE_NO_WARNINGS %CORE% win\main.c /Fe:NESSYSINTEGER.exe /link /SUBSYSTEM:WINDOWS || exit /b 1
-cl /nologo /O2 /W3 /D_CRT_SECURE_NO_WARNINGS %CORE% tools\nessys_cli.c /Fe:nessys_cli.exe || exit /b 1
-cl /nologo /O2 /W3 /D_CRT_SECURE_NO_WARNINGS %CORE% tests\dma_trace.c /Fe:dma_trace.exe || exit /b 1
-cl /nologo /O2 /W3 /D_CRT_SECURE_NO_WARNINGS %CORE% tools\accuracycoin_run.c /Fe:accuracycoin_run.exe || exit /b 1
-cl /nologo /O2 /W3 /D_CRT_SECURE_NO_WARNINGS %CORE% tests\mapper_test.c /Fe:mapper_test.exe || exit /b 1
+rem /MT links the C runtime into the programs, so they need no Visual C++ runtime DLLs.
+cl /nologo /O2 /W3 /MT /D_CRT_SECURE_NO_WARNINGS %CORE% win\main.c /Fe:NESSYSINTEGER.exe /link /SUBSYSTEM:WINDOWS || exit /b 1
+cl /nologo /O2 /W3 /MT /D_CRT_SECURE_NO_WARNINGS %CORE% tools\nessys_cli.c /Fe:nessys_cli.exe || exit /b 1
+cl /nologo /O2 /W3 /MT /D_CRT_SECURE_NO_WARNINGS %CORE% tests\dma_trace.c /Fe:dma_trace.exe || exit /b 1
+cl /nologo /O2 /W3 /MT /D_CRT_SECURE_NO_WARNINGS %CORE% tools\accuracycoin_run.c /Fe:accuracycoin_run.exe || exit /b 1
+cl /nologo /O2 /W3 /MT /D_CRT_SECURE_NO_WARNINGS %CORE% tests\mapper_test.c /Fe:mapper_test.exe || exit /b 1
 del /q *.obj >nul 2>nul
 goto done
 :mingw

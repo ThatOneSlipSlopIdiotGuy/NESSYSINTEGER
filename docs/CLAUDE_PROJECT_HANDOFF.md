@@ -1,12 +1,40 @@
 # Project handoff (for the next Claude session)
 
-**Last verified:** 2026-11-18, about 21:45 UTC.
+**Last verified:** 2026-11-23 (UTC), README audit. The accuracy audit was 2026-11-18.
 
 **Repository:** https://github.com/ThatOneSlipSlopIdiotGuy/NESSYSINTEGER
 
-- **Branch:** `accuracy-audit-1`, based on `main` at `3cd1598` (0.7.2).
-- **This session's work:** the commits after `3cd1598` on that branch, offered to the owner as a pull request. Nothing is pushed to `main` directly.
+- **`main`:** the owner merged `accuracy-audit-1` (0.7.3) as `8d4b0fc`.
+- **Latest work:** branch `readme-audit`, based on `8d4b0fc`, offered as a pull request. Nothing is pushed to `main` directly.
 - **Worktree:** clean after the final commit.
+
+## 2026-11-22/23: README audit (verified)
+
+Every claim in `README.md` was checked against the code, the test results, or a fresh run:
+
+- **Mapper list:** exactly 50 numbers are accepted, confirmed by trying all 4096 with `nes_load_rom`.
+- **Pinout tables:** match `PIN72`/`PIN60` in `src/cart.c` and NESdev's pinout.
+- **Menus, keys, defaults and file names:** read from `win/main.c`.
+- **"Things to try":** the pin 26 High/Low results and the lockout from contact 35 were reproduced with `nessys_cli`.
+- **Self-test:** passes at all four alignments.
+
+**Fixed:**
+
+- **The license:** `scoop/nessysinteger.json` said MIT, but the repository is PolyForm Noncommercial 1.0.0. The release zip now carries `LICENSE` and `NOTICE` (`package.ps1`), and the README has a License section.
+- **Visual Studio builds:** they needed the VC++ runtime DLL despite the README's "no DLLs". They now link it statically: `/MT` in `build.bat`, `CMAKE_MSVC_RUNTIME_LIBRARY` in `CMakeLists.txt` (CMake 3.15+). The CMake change was checked on Linux; MSVC itself was not available.
+- **Transparency in the README:**
+  - a platform table (Windows 10 played on; 0.7.3 tested only on Linux; macOS and Windows 7 and older untested);
+  - the GUI's defaults: *Wear and dirt* is on. Simulating 100,000 default console + cartridge pairs gave about 0.4% with a flaky contact;
+  - which parts of the connector physics and the power-off corruption odds are a model, not measurements;
+  - the colour palette not being compared with real consoles;
+  - the earlier CPU fuzz test having no harness in the repository;
+  - /IRQ sampled with /NMI.
+- **The runner's contact check:** it now also rejects runs with any open or flaky contact. `perfect` doesn't cover the lockout chip's contacts. The full suite re-ran at alignment 0 with the same result (120 PASS, 4 UNVERIFIED_MANUAL, 2 REVISION_DEPENDENT).
+- **`tools/mapper_census.py`:** reads ROM headers and reports board coverage.
+  - On the owner's 5,827-cartridge collection: 4,400 supported (75.5%), 1,427 on 217 missing boards; the top 10 would give 88.9%; 457 dumps are PAL; no .fds images.
+  - Missing boards, most-needed first: 30 (367 dumps), 176 (96), 268 (81), 163 (71), 224 (39), 28 (35), 178 (33), 150 (20), 90 (18), 148 (18).
+
+**Observed but not changed:** the Windows front end already offers the four picture shapes the owner asked about for a Minecraft TV: 8:7 aspect and overscan crop, each switchable.
 
 ## Owner's decisions (keep these)
 
@@ -14,7 +42,7 @@
 - **Order:** core hardware accuracy first; colour and video fidelity next; cartridge chips and pin physics after the core is trustworthy.
 - **Tests:**
   - They "have to pass".
-  - When one fails, first rule out the virtual cartridge: ideal contacts and a clean connector. The runner enforces `perfect: true`.
+  - When one fails, first rule out the virtual cartridge: ideal contacts and a clean connector. The runner enforces `perfect: true` and no open or flaky contact.
   - Then find the real cause. Never special-case a ROM.
 - **Skipping:** allowed. Always say what was skipped and why.
 - **Credits:** "Emulator design and programming: Claude"; "Logo artwork and play testing: ThatOneSlipSlopIdiotGuy".
@@ -91,7 +119,7 @@ Details and evidence are in [MEGAPACK_ERRATA.md](MEGAPACK_ERRATA.md) and [ACCURA
 | APU | High for timing, medium for analogue output | apu_test, apu_reset, blargg_apu_2005 and AccuracyCoin pass. Mixer levels follow the NESdev formula; no hardware recording to compare |
 | DMA | High | sprdma_and_dmc_dma, `dma_trace`, AccuracyCoin's DMA tests |
 | Reset and I/O | High for APU and CPU reset | apu_reset and cpu_reset pass through a real handshake. "Usually 9" and 11–12 are open (roadmap 5) |
-| GUI | Not touched; not run this session | — |
+| GUI | Not run since 0.7.2 (no Windows here) | Menus, keys and defaults were read from `win/main.c` for the README audit; behaviour depends on the owner's play testing |
 | Mappers and contacts | `mapper_test` 773 green; MMC3 blargg tests pass | The MMC3 `$A001` power-on value is UNKNOWN |
 | Save states | Layout unchanged (117792 bytes) | `in_reset`/`reset_pulse` live outside `NesState` (front-end state), as before |
 
@@ -110,7 +138,7 @@ Details and evidence are in [MEGAPACK_ERRATA.md](MEGAPACK_ERRATA.md) and [ACCURA
 
 ## START HERE NEXT SESSION
 
-1. Clone the repository. Check out `main` if the owner merged `accuracy-audit-1`, otherwise the branch.
+1. Clone the repository. Check out `main` if the owner merged `readme-audit`, otherwise that branch.
 2. Run `make && make test` and expect everything green.
 3. Clone nes-test-roms and AccuracyCoin at the commits above, then run `python3 tests/suite/run_suite.py --roms nes-test-roms=... --roms AccuracyCoin=... --dry-run`. All 126 lines should say `ok`.
 4. Without `--dry-run` it should report only PASS, the 4 `apu_mixer` UNVERIFIED_MANUAL and the 2 MMC3 REVISION_DEPENDENT cases.

@@ -31,7 +31,7 @@ $zip = Join-Path $dist $zipName
 Write-Host "== Packaging $zipName" -ForegroundColor Cyan
 if (Test-Path $stage) { Remove-Item $stage -Recurse -Force }
 New-Item -ItemType Directory -Force -Path (Join-Path $stage "tests\roms") | Out-Null
-Copy-Item -Path "NESSYSINTEGER.exe", "nessys_cli.exe", "README.md" -Destination $stage
+Copy-Item -Path "NESSYSINTEGER.exe", "nessys_cli.exe", "README.md", "LICENSE", "NOTICE" -Destination $stage
 Copy-Item -Path "tests\roms\*.nes" -Destination (Join-Path $stage "tests\roms")
 if (Test-Path $zip) { Remove-Item $zip -Force }
 Compress-Archive -Path (Join-Path $stage "*") -DestinationPath $zip

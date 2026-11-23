@@ -16,7 +16,7 @@ Verdict names are defined at the top of [`tests/suite/run_suite.py`](../tests/su
 | Console | NTSC NES-001 front-loader (`console: NES` in every report) |
 | CPU/PPU clock alignment | 0–3 (the matrix below) |
 | Power-on RAM | Mode 4, "like a real console" (the CLI's fixed console fingerprint, `console_id` 1313166129). Mode 0 (all zeros) for the timing-sensitive suites |
-| Cartridge contacts | Ideal. Every JSON report must say `"perfect": true` or the runner rejects the case |
+| Cartridge contacts | Ideal. Every JSON report must say `"perfect": true` with no open or flaky contact, or the runner rejects the case. The open/flaky part was added on 2026-11-22: `perfect` alone doesn't cover the lockout chip's contacts. The full suite was re-run with it at alignment 0 and gave the same result |
 | Lockout chip | Enabled; the handshake succeeded in every report (`cic_ok`) |
 | RESET | One press per new `$81`, 15 frames after the request, held 4 frames, through the console's reset line |
 

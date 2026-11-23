@@ -2,7 +2,10 @@
     "version": "@VERSION@",
     "description": "Cycle-stepped NES emulator with a physical cartridge-connector model: tilt the cart, lift pins, hot-swap.",
     "homepage": "@HOMEPAGE@",
-    "license": "MIT",
+    "license": {
+        "identifier": "PolyForm-Noncommercial-1.0.0",
+        "url": "https://polyformproject.org/licenses/noncommercial/1.0.0"
+    },
     "architecture": {
         "64bit": {
             "url": "@URL@",

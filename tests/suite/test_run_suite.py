@@ -113,6 +113,10 @@ class Blargg6000(unittest.TestCase):
 
     def test_contacts_must_be_ideal(self):
         self.assertEqual(V(CASE, proc(0), report(0, perfect=False)), "HARNESS_ERROR")
+        for key in ("open_pins", "flaky_pins"):         # e.g. a lifted lockout-chip contact
+            r = report(0)
+            r["connector"][key] = 1
+            self.assertEqual(V(CASE, proc(0), r), "HARNESS_ERROR", key)
 
 
 class OtherProtocols(unittest.TestCase):

@@ -49,4 +49,4 @@ The version comes from the `-Version` argument; the default is set at the top of
 - If PowerShell refuses to run `package.ps1` because it's "not digitally signed", the files still carry Windows' downloaded-from-the-internet mark. Run `Get-ChildItem -Recurse | Unblock-File` once in this folder.
 - Scoop caches downloads. If you rebuild without changing the version, run `scoop cache rm nessysinteger` before reinstalling, or bump `-Version`.
 - Scoop keeps `nessysinteger.ini` across updates. That file holds the settings, key bindings, the console's fingerprint and the connector's condition. Saves, states, cheats and screenshots live next to the ROMs, so Scoop never touches them.
-- `scoop\nessysinteger.json` declares `"license": "MIT"`. Make it match the license you choose for the repository.
+- `scoop\nessysinteger.json` declares the repository's license, the PolyForm Noncommercial License 1.0.0. The release zip carries `LICENSE` and `NOTICE`, because the license requires its terms and the "Required Notice" line to travel with every copy.
